@@ -1,6 +1,7 @@
 import React from 'react';
+import sty
 
 function LoginPage() {
-  return <p>Login Page</p>;
+  
 }
 export default LoginPage;
