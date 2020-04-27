@@ -1,19 +1,19 @@
-import React from "react";
-import Slider from "react-slick";
-import styled from "styled-components";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React from 'react';
+import Slider from 'react-slick';
+import styled from 'styled-components';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
   faTwitter,
   faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
+} from '@fortawesome/free-brands-svg-icons';
 
 function random() {
   return Math.floor(Math.random() * 5);
 }
-const array = ["blue", "red", "green", "orange", "black"];
+const array = ['blue', 'red', 'green', 'orange', 'black'];
 
 const Service = styled.div`
   display: flex;
@@ -21,7 +21,7 @@ const Service = styled.div`
   justify-content: center;
   text-align: center;
   overflow: hidden;
-  font-family: "Lato", black;
+  font-family: 'Lato', black;
   .image-place {
     align-items: center;
     background-color: ${array[random()]};
@@ -63,7 +63,7 @@ const Service = styled.div`
 `;
 
 function slider() {
-  var settings = {
+  const settings = {
     dots: true,
     infinite: true,
     speed: 500,
@@ -71,6 +71,7 @@ function slider() {
     slidesToScroll: 1,
   };
   return (
+    // eslint-disable-next-line react/jsx-props-no-spreading
     <Slider {...settings}>
       <Service>
         <div className="image-place">
