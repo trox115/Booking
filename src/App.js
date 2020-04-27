@@ -2,7 +2,8 @@ import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import LoginPage from './components/LoginPage/LoginPage';
+import LoginPage from './components/LogReg/LoginPage';
+import RegisterPage from './components/LogReg/RegisterPage.js';
 import HomePage from './components/HomePage/HomePage';
 import LifestylePage from './components/LifestylePage/LifestylePage';
 import BarberPage from './components/BarberPage/BarberPage';
@@ -19,6 +20,7 @@ function App() {
           <NavBar />
           <Switch>
             <Route exact path="/" component={LoginPage} />
+            <Route exact path="/register" component={RegisterPage} />
             <Route exact path="/home" component={HomePage} />
             <Route exact path="/lifestyle" component={LifestylePage} />
             <Route exact path="/barber" component={BarberPage} />

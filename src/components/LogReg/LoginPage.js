@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import barber from '../../assets/barber_login.jpg';
 
@@ -79,15 +79,32 @@ const Container = styled.div`
 `;
 
 function LoginPage() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [password_confirmation, setPassword2] = useState('');
+
+  function handleChange(event) {
+    console.log('event');
+  }
+
+  function handleSubmit() {
+    console.log('hello');
+  }
   return (
     <Container>
       <ImageLeft />
       <Login>
         <div className="logoform">
           <h1>Barber</h1>
-          <h2>Login</h2>
-          <form>
-            <input type="text" name="email" placeholder="Enter your username" />
+          <h2>Register</h2>
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              name="email"
+              placeholder="Enter your email"
+              value={email}
+              onChange={handleChange}
+            />
             <input
               type="password"
               name="email"
