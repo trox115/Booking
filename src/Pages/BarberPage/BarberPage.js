@@ -1,8 +1,8 @@
-import React from "react";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import styled from "styled-components";
+import React from 'react';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
+import styled from 'styled-components';
 
 const Overlay = styled.div`
   min-width: 100%;
@@ -13,7 +13,7 @@ const Overlay = styled.div`
 `;
 
 const BarberPic = styled.div`
-  background: url("/barber1.png");
+  background: url('/barber1.png');
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
@@ -23,7 +23,7 @@ const BarberPic = styled.div`
   background-position: left bottom;
 `;
 const Title = styled.div`
-  font-family: "Lato", black;
+  font-family: 'Lato', black;
   text-align: center;
   color: white;
   margin: 0 25%;
