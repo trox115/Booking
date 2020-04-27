@@ -1,8 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Pacifico&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Lato&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Pacifico&display=swap");
+@import url("https://fonts.googleapis.com/css?family=Lato&display=swap");
 
 .App {
   text-align: center;
+}
+
+.nav-link.active {
+  background-color: #96bf24 !important;
 }
 
 .App-logo {
@@ -38,4 +42,48 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.nav {
+  border-right: 1px solid #f9f9f9;
+  height: 100vh;
+  box-shadow: 3px 0px 3px 0px rgba(249, 249, 249, 1);
+}
+
+.fill {
+  min-height: 100%;
+  height: 100%;
+}
+
+.slick-dots {
+  top: -25px;
+  bottom: initial;
+}
+
+.slick-next:before {
+  position: absolute;
+  right: 0;
+  background-color: #96bf24;
+  height: 50px;
+  width: 70px;
+  top: -50px;
+  border-radius: 40% 0 0 40%;
+  content: "\25B7";
+  align-content: center;
+  line-height: 40px;
+  vertical-align: middle;
+}
+
+.slick-prev:before {
+  position: absolute;
+  left: -20px;
+  background-color: #96bf24;
+  height: 50px;
+  width: 70px;
+  top: -50px;
+  border-radius: 0 40% 40% 0;
+  content: "\25C1";
+  align-content: center;
+  line-height: 40px;
+  vertical-align: middle;
 }
