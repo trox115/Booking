@@ -3,7 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
-// import Slider from './Slider';
+import Slider from './Slider';
 
 const Title = styled.div`
   font-family: 'Lato', black;
@@ -27,7 +27,7 @@ function HomePage() {
               <h3>Choose your Barber</h3>
               <p>Choose one to book with him.</p>
             </Title>
-            {/* <Slider /> */}
+            <Slider />
           </Col>
         </Row>
       </Container>
