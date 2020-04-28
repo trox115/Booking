@@ -13,33 +13,30 @@ import NavBar from './common/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-// function CheckLogin() {
-
-//   axios
-//     .get('http://localhost:3001/logged_in', { withCredentials: true })
-//     .then(response => {
-//       console.log('loggedIn?', response);
-//     });
-// }
-
 function CheckLogin() {
-  return fetch('http://localhost:3001/logged_in', {
-    credentials: 'include',
-    method: 'GET',
-    headers: {
-      'content-type': 'application/json',
-      'Access-Control-Allow-Credentials': 'true',
-      'Access-Control-Allow-Origin': '*',
-    },
-    body: JSON.stringify(),
-  })
+  axios
+    .get('http://localhost:3001/logged_in', { withCredentials: true })
     .then(response => {
-      console.log(response);
-    })
-    .catch(error => {
-      console.log(error);
+      console.log('loggedIn?', response);
     });
 }
+
+// function CheckLogin() {
+//   return fetch('http://localhost:3001/logged_in', {
+//     credentials: 'include',
+//     method: 'GET',
+//     headers: {
+//       'Access-Control-Allow-Origin': 'http://localhost:3000', // Required for CORS support to work
+//       'Access-Control-Allow-Credentials': true,
+//     },
+//   })
+//     .then(response => {
+//       console.log(response);
+//     })
+//     .catch(error => {
+//       console.log(error);
+//     });
+// }
 function App() {
   CheckLogin();
   return (
