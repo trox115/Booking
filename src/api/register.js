@@ -28,7 +28,7 @@ function Register({ ...props }) {
 
 export function session({ ...props }) {
   const { email, password } = props;
-
+  
   return axios
     .post(
       'http://localhost:3001/sessions',
