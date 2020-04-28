@@ -15,9 +15,11 @@ import './App.css';
 
 function CheckLogin() {
   console.log('hello');
-  axios.get('http://localhost:3001/logged_in', true).then(response => {
-    console.log('loggedIn?', response);
-  });
+  axios
+    .get('https://antonio-barber-api.herokuapp.com/', { withCredentials: true })
+    .then(response => {
+      console.log('loggedIn?', response);
+    });
 }
 
 // function CheckLogin() {
