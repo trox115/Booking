@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
 import barber from '../../assets/barber_login.jpg';
+import * as authActions from '../../actions/loginActions';
 
 const ImageLeft = styled.div`
   width: 75%;
@@ -78,17 +80,31 @@ const Container = styled.div`
   position: absolute;
 `;
 
-function LoginPage() {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const [password_confirmation, setPassword2] = useState('');
+function LoginPage({ createSession, history, ...props }) {
+  console.log(props);
+  const [form, setState] = useState({
+    email: '',
+    password: '',
+  });
 
   function handleChange(event) {
-    console.log('event');
+    setState({
+      ...form,
+      [event.target.name]: event.target.value,
+    });
+    console.log(event.target.value);
   }
 
-  function handleSubmit() {
-    console.log('hello');
+  function handleSubmit(event) {
+    event.preventDefault();
+
+    createSession(form)
+      .then(() => {
+        history.push('/home');
+      })
+      .catch(error => {
+        console.log(error);
+      });
   }
   return (
     <Container>
@@ -102,13 +118,15 @@ function LoginPage() {
               type="text"
               name="email"
               placeholder="Enter your email"
-              value={email}
+              value={form.email}
               onChange={handleChange}
             />
             <input
               type="password"
-              name="email"
+              name="password"
               placeholder="Enter your password"
+              onChange={handleChange}
+              value={form.password}
             />
             <button type="submit"> Login </button>
           </form>
@@ -117,4 +135,15 @@ function LoginPage() {
     </Container>
   );
 }
-export default LoginPage;
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    createSession: user => dispatch(authActions.Login(user)),
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

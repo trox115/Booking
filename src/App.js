@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import LoginPage from './components/LogReg/LoginPage';
@@ -12,7 +13,16 @@ import NavBar from './common/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
+function CheckLogin() {
+  console.log('hello');
+  axios
+    .get('http://localhost:3001/logged_in', { withCredentials: true })
+    .then(response => {
+      console.log('loggedIn?', response);
+    });
+}
 function App() {
+  CheckLogin();
   return (
     <>
       <Container fluid>
