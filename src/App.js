@@ -14,13 +14,23 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
 function CheckLogin() {
-  console.log('hello');
-  axios
-    .get('http://localhost:3001/logged_in', { withCredentials: true })
+  return fetch('http://localhost:3001/sessions', {
+    credentials: 'include',
+    method: 'GET',
+    headers: {
+      'content-type': 'application/json',
+      'Access-Control-Allow-Credentials': 'true',
+    },
+    body: JSON.stringify(),
+  })
     .then(response => {
-      console.log('loggedIn?', response);
+      console.log(response);
+    })
+    .catch(error => {
+      console.log(error);
     });
 }
+
 function App() {
   CheckLogin();
   return (
