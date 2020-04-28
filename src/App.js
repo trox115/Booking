@@ -16,27 +16,9 @@ import './App.css';
 function CheckLogin() {
   axios
     .get('http://localhost:3001/logged_in', { withCredentials: true })
-    .then(response => {
-      console.log('loggedIn?', response);
-    });
+    .then(response => response);
 }
 
-// function CheckLogin() {
-//   return fetch('http://localhost:3001/logged_in', {
-//     credentials: 'include',
-//     method: 'GET',
-//     headers: {
-//       'Access-Control-Allow-Origin': 'http://localhost:3000', // Required for CORS support to work
-//       'Access-Control-Allow-Credentials': true,
-//     },
-//   })
-//     .then(response => {
-//       console.log(response);
-//     })
-//     .catch(error => {
-//       console.log(error);
-//     });
-// }
 function App() {
   CheckLogin();
   return (
@@ -45,9 +27,9 @@ function App() {
         <Row>
           <NavBar />
           <Switch>
-            <Route exact path="/" component={LoginPage} />
+            <Route exact path="/" component={HomePage} />
             <Route exact path="/register" component={RegisterPage} />
-            <Route exact path="/home" component={HomePage} />
+            <Route exact path="/login" component={LoginPage} />
             <Route exact path="/lifestyle" component={LifestylePage} />
             <Route exact path="/barber" component={BarberPage} />
           </Switch>

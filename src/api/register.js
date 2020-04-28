@@ -1,7 +1,8 @@
 import axios from 'axios';
-import { handleResponse, handleError } from './responses';
 
 function Register({ ...props }) {
+  // Because password digest from rails
+  // eslint-disable-next-line camelcase
   const { email, password, password_confirmation } = props;
 
   axios
@@ -16,19 +17,13 @@ function Register({ ...props }) {
       },
       true,
     )
-    .then(response => {
-      console.log(response);
-      return response;
-    })
-    .catch(response => {
-      console.log(response);
-      return response;
-    });
+    .then(response => response)
+    .catch(response => response);
 }
 
 export function session({ ...props }) {
   const { email, password } = props;
-  
+
   return axios
     .post(
       'http://localhost:3001/sessions',
@@ -40,30 +35,8 @@ export function session({ ...props }) {
       },
       { withCredentials: true },
     )
-    .then(response => {
-      return response;
-    })
-    .catch(erro => {
-      return erro;
-    });
+    .then(response => response)
+    .catch(erro => erro);
 }
-
-// export function session({ ...props }) {
-//   const { email, password } = props;
-//   const js = {
-//     user: {
-//       email,
-//       password,
-//     },
-//   };
-//   return fetch('http://localhost:3001/sessions', {
-//     credentials: 'same-origin',
-//     method: 'POST',
-//     headers: { 'content-type': 'application/json' },
-//     body: JSON.stringify(js),
-//   })
-//     .then(handleResponse)
-//     .catch(handleError);
-// }
 
 export default Register;

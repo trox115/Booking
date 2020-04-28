@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import barber from '../../assets/barber_login.jpg';
 import * as authActions from '../../actions/loginActions';
@@ -80,8 +81,7 @@ const Container = styled.div`
   position: absolute;
 `;
 
-function LoginPage({ createSession, history, ...props }) {
-  console.log(props);
+function LoginPage({ createSession, history }) {
   const [form, setState] = useState({
     email: '',
     password: '',
@@ -92,7 +92,6 @@ function LoginPage({ createSession, history, ...props }) {
       ...form,
       [event.target.name]: event.target.value,
     });
-    console.log(event.target.value);
   }
 
   function handleSubmit(event) {
@@ -102,9 +101,7 @@ function LoginPage({ createSession, history, ...props }) {
       .then(() => {
         history.push('/home');
       })
-      .catch(error => {
-        console.log(error);
-      });
+      .catch(error => error);
   }
   return (
     <Container>
@@ -146,4 +143,11 @@ function mapDispatchToProps(dispatch) {
     createSession: user => dispatch(authActions.Login(user)),
   };
 }
+
+LoginPage.propTypes = {
+  createSession: PropTypes.func.isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
