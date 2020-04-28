@@ -5,7 +5,7 @@ export function loginSuccess(user) {
 }
 
 export function Login(user) {
-  return function (dispatch) {
+  return function unamed(dispatch) {
     return auth
       .session(user)
       .then(response => {
