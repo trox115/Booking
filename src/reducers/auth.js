@@ -1,9 +1,11 @@
 function AuthReducer(state = [], action) {
   switch (action.type) {
     case 'CREATE_SESSION':
-      return [{ ...action.user }, { loggedIn: true }];
+      return state;
 
     default:
       return state;
   }
 }
+
+export default AuthReducer;

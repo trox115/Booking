@@ -6,7 +6,11 @@ import configureStore from './configureStore';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = configureStore();
+const initialState = {
+  loggedInStatus: 'NOT_LOGGED_IN',
+  user: { name: 'Antonio' },
+};
+const store = configureStore(initialState);
 
 ReactDOM.render(
   <Provider store={store}>
