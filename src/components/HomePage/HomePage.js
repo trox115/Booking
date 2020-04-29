@@ -84,12 +84,12 @@ function HomePage({ ...props }) {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
-
+  const { barber } = props;
   useEffect(() => {
     const { loadBarbers } = props;
     loadBarbers();
-  }, [3]);
-  const { barber } = props;
+  }, [1]);
+
   let allbarber = [];
   allbarber = barber.map(barbers => (
     <Service key={barbers.id} currentColor={barbers.color}>
@@ -135,7 +135,7 @@ function HomePage({ ...props }) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    loadBarbers: dispatch(barberActions.Barbers()),
+    loadBarbers: () => dispatch(barberActions.Barbers()),
   };
 }
 
@@ -148,7 +148,7 @@ function mapStateToProps(state) {
 
 HomePage.propTypes = {
   loadBarbers: PropTypes.func.isRequired,
-  barber: PropTypes.shape.isRequired,
+  barber: PropTypes.instanceOf(Array).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
