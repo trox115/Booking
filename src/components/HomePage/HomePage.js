@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 import Slider from 'react-slick';
+import PropTypes from 'prop-types';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -15,11 +16,7 @@ import {
 } from '@fortawesome/free-brands-svg-icons';
 import * as barberActions from '../../actions/Actions';
 
-const array = ['blue', 'red', 'green', 'orange', 'black'];
-
-const color = ({ currentColor }) => {
-  return currentColor;
-};
+const color = ({ currentColor }) => currentColor;
 
 const Service = styled.div`
   display: flex;
@@ -103,7 +100,7 @@ function HomePage({ ...props }) {
         <p>{barbers.name}</p>
       </div>
       <div className="details">
-        <p> {barbers.shortD}</p>
+        <p>{barbers.shortD}</p>
       </div>
       <div className="social">
         <a href={barbers.tw}>
@@ -128,6 +125,7 @@ function HomePage({ ...props }) {
               <h3>Choose your Barber</h3>
               <p>Choose one to book with him.</p>
             </Title>
+            {/* eslint-disable-next-line react/jsx-props-no-spreading */}
             <Slider {...settings}>{allbarber}</Slider>
           </Col>
         </Row>
@@ -137,7 +135,7 @@ function HomePage({ ...props }) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    loadBarbers: barbers => dispatch(barberActions.Barbers()),
+    loadBarbers: dispatch(barberActions.Barbers()),
   };
 }
 
@@ -147,5 +145,10 @@ function mapStateToProps(state) {
     barber: state.barber,
   };
 }
+
+HomePage.propTypes = {
+  loadBarbers: PropTypes.func.isRequired,
+  barber: PropTypes.shape.isRequired,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);
