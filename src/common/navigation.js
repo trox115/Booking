@@ -1,5 +1,6 @@
 import React from 'react';
 import Nav from 'react-bootstrap/Nav';
+import { NavLink } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -52,13 +53,31 @@ function NavBar() {
   return (
     <Col md="2" sm="2">
       <Nav className="nav flex-column nav-pills nav-fill">
-        <SingleLink className="navbar-brand" href="#">
+        <SingleLink className="navbar-brand" href="/">
           <Brand>Barber</Brand>
         </SingleLink>
-        <SingleLink className="nav-link active">Barbers</SingleLink>
-        <SingleLink className="nav-link">LifeStykle</SingleLink>
-        <SingleLink className="nav-link">Book</SingleLink>
-        <SingleLink className="nav-link">Your Bookings</SingleLink>
+        <NavLink to="/" className="nav-link" activeClassName="active" exact>
+          Barbers
+        </NavLink>
+        <NavLink
+          to="/lifestyle"
+          className="nav-link"
+          activeClassName="active"
+          exact
+        >
+          LifeStyle
+        </NavLink>
+        <NavLink to="/book" className="nav-link" activeClassName="active" exact>
+          Book
+        </NavLink>
+        <NavLink
+          to="/bookings"
+          className="nav-link"
+          activeClassName="active"
+          exact
+        >
+          Your Bookkings
+        </NavLink>
         <Social>
           <FontAwesomeIcon icon={faTwitter} />
           <FontAwesomeIcon icon={faFacebookF} />
