@@ -1,4 +1,3 @@
-import React from 'react';
 import Slider from 'react-slick';
 import styled from 'styled-components';
 import 'slick-carousel/slick/slick.css';
@@ -62,7 +61,8 @@ const Service = styled.div`
   }
 `;
 
-function slider() {
+function slider({ ...props }) {
+  console.log('thisprops', props);
   const settings = {
     dots: true,
     infinite: true,
@@ -70,6 +70,36 @@ function slider() {
     slidesToShow: 3,
     slidesToScroll: 1,
   };
+
+  // componentDidMount() {
+  //   const { loadBooks } = this.props.actions;
+  //   loadBooks().catch(error => {
+  //     alert('algo falhou ' + error);
+  //   });
+  // }
+
+  // let allbarber = [];
+
+  // allbarber = barbers.map(barber => (
+  //   <Service>
+  //     <div className="image-place">
+  //       <img src="./barber1.png" alt="1" />
+  //     </div>
+  //     <div className="barber-name">
+  //       <p>John Doe</p>
+  //     </div>
+  //     <div className="details">
+  //       <p> This is a barber with 5 yers experience</p>
+  //     </div>
+  //     <div className="social">
+  //       <FontAwesomeIcon icon={faTwitter} />
+  //       <FontAwesomeIcon icon={faFacebook} />
+  //       <FontAwesomeIcon icon={faInstagram} />
+  //     </div>
+  //   </Service>
+  //   //     <Book key={book.name} id={book.id} book={book} remove={deleteb} />
+  // ));
+
   return (
     // eslint-disable-next-line react/jsx-props-no-spreading
     <Slider {...settings}>
