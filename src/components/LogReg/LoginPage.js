@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import barber from '../../assets/barber_login.jpg';
-import * as authActions from '../../actions/loginActions';
+import * as authActions from '../../actions/Actions';
 
 const ImageLeft = styled.div`
   width: 75%;

@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
-
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -14,7 +13,7 @@ import {
   faTwitter,
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
-import * as barberActions from '../../actions/loginActions';
+import * as barberActions from '../../actions/Actions';
 
 const array = ['blue', 'red', 'green', 'orange', 'black'];
 
