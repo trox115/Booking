@@ -21,6 +21,7 @@
     "react-scripts": "3.4.1",
     "react-slick": "^0.25.2",
     "redux": "^4.0.5",
+    "redux-thunk": "^2.3.0",
     "slick-carousel": "^1.8.1",
     "styled-components": "^5.1.0"
   },
@@ -51,6 +52,7 @@
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-react-hooks": "^2.5.1"
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "redux-immutable-state-invariant": "^2.1.0"
   }
 }

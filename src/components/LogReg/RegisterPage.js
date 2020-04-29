@@ -134,4 +134,5 @@ function RegisterPage() {
     </Container>
   );
 }
+
 export default RegisterPage;
