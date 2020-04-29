@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -13,14 +14,7 @@ import NavBar from './common/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function CheckLogin() {
-  axios
-    .get('http://localhost:3001/logged_in', { withCredentials: true })
-    .then(response => response);
-}
-
 function App() {
-  CheckLogin();
   return (
     <>
       <Container fluid>
@@ -38,5 +32,9 @@ function App() {
     </>
   );
 }
-
-export default App;
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+  };
+}
+export default connect(mapStateToProps)(App);

@@ -87,3 +87,12 @@
   line-height: 40px;
   vertical-align: middle;
 }
+
+.nav-link{
+  margin-left: 10px;
+  font-family: 'Lato', black;
+  font-weight: 600;
+  text-align: left;
+  color: black;
+  cursor: pointer;
+}
