@@ -3,6 +3,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
+import Calendar from './Calendar';
 
 const Overlay = styled.div`
   min-width: 100%;
@@ -65,6 +66,7 @@ function BarberPage() {
                   </p>
                   <button type="button">Book now</button>
                 </Title>
+                <Calendar />
               </Col>
             </Row>
           </Container>
