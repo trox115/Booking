@@ -1,9 +1,12 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 import Calendar from './Calendar';
+import * as bookingActions from '../../actions/Actions';
+import createBooking from '../../api/AllApi';
 
 const Overlay = styled.div`
   min-width: 100%;
@@ -50,7 +53,20 @@ const Title = styled.div`
   }
 `;
 
-function BarberPage() {
+function BarberPage({ Bookings, ...props }) {
+  const [bk, setBk] = useState(null);
+  const test = async () => {
+    const data = await Bookings();
+    setBk(data);
+
+  };
+
+  useEffect(() => {
+    if (bk === null) {
+      test();
+    }
+  }, data);
+
   return (
     <Col md="10 p-0" className="barber">
       <BarberPic>
@@ -64,7 +80,6 @@ function BarberPage() {
                     This barber has 10 years experience, formed in USA is very
                     good to cut hair.
                   </p>
-                  <button type="button">Book now</button>
                 </Title>
                 <Calendar />
               </Col>
@@ -75,5 +90,18 @@ function BarberPage() {
     </Col>
   );
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    loadBarbers: () => dispatch(bookingActions.Barbers()),
+    Bookings: () => dispatch(bookingActions.Bookings()),
+  };
+}
 
-export default BarberPage;
+function mapStateToProps(state) {
+  return {
+    user: state.user,
+    barber: state.barber,
+    bookings: state.booking,
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(BarberPage);
