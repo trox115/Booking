@@ -8,10 +8,11 @@ import 'react-datepicker/dist/react-datepicker.css';
 function Calendar({ ...props }) {
   let blockdays = [];
   let groupedData = null;
+  console.log(props);
   const { barberId } = props;
   const userId = 4;
   const { dateTime } = props;
-  const blockHours = [setHours(setMinutes(new Date(), 0), 10)];
+  const blockHours = [];
   let all = null;
   function isSameBarber(obj) {
     console.log(obj);
@@ -20,8 +21,7 @@ function Calendar({ ...props }) {
   function cToObject(bk) {
     if (bk !== null) {
       groupedData = bk.reduce((results, item) => {
-        if (results[item.barber_id] === barberId) {
-          console.log('teste', item.barber_id);
+        if (item.barber_id === barberId) {
           results[item.date] = results[item.date] || [];
           results[item.date].push(item.hour);
         }
@@ -47,6 +47,7 @@ function Calendar({ ...props }) {
   );
 
   useEffect(() => {
+    cToObject(dateTime);
     const novaDaata = new Date(startDate);
     const year = novaDaata.getFullYear();
     const month = novaDaata.getMonth() + 1;
@@ -54,7 +55,6 @@ function Calendar({ ...props }) {
     const newDate = `${year}/${month}/${day}`;
     if (all[newDate]) {
       for (let i = 0; i < all[newDate].length; i += 1) {
-        console.log('aqui', all);
         blockHours.push(setHours(setMinutes(new Date(), 0), all[newDate][i]));
       }
     }
