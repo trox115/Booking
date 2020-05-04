@@ -24,7 +24,7 @@ function App() {
             <Route exact path="/register" component={RegisterPage} />
             <Route exact path="/login" component={LoginPage} />
             <Route exact path="/lifestyle" component={LifestylePage} />
-            <Route exact path="/barber" component={BarberPage} />
+            <Route exact path="/barber/:slug" component={BarberPage} />
           </Switch>
         </Row>
       </Container>

@@ -6,18 +6,20 @@ import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 import Calendar from './Calendar';
 import * as bookingActions from '../../actions/Actions';
-import createBooking from '../../api/AllApi';
 
+const color = ({ currentColor }) => currentColor;
+const barberphto = ({ currentphoto }) => currentphoto;
 const Overlay = styled.div`
   min-width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: ${color};
+  opacity: 0.7;
   margin-left: -10px;
   z-index: 2;
 `;
 
 const BarberPic = styled.div`
-  background: url('/barber1.png');
+  background-image: url(${barberphto});
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
@@ -55,37 +57,36 @@ const Title = styled.div`
 
 function BarberPage({ Bookings, ...props }) {
   const [bk, setBooking] = useState([]);
+  const { user } = props;
+  const userId = user[0].user.id;
+
+  console.log(userId);
+  const [barber, setBarber] = useState({ ...props.barbers });
+
   let i = 0;
   useEffect(async () => {
     async function fetchData() {
       const response = await fetch('http://localhost:3001/bookings');
       const data = await response.json();
+      console.log(data);
       setBooking(await data);
     }
 
-    i = 1;
     fetchData();
   }, [i]);
-
-  useEffect(() => {
-    console.log('modificado');
-  }, [bk]);
-
+  const photo = `/${barber.phto}.png`;
   return (
     <Col md="10 p-0" className="barber">
-      <BarberPic>
-        <Overlay>
+      <BarberPic currentphoto={photo}>
+        <Overlay currentColor={barber.color}>
           <Container className="fill">
             <Row className="align-items-center h-100">
               <Col md="12">
                 <Title>
                   <h3>Book this barber now</h3>
-                  <p>
-                    This barber has 10 years experience, formed in USA is very
-                    good to cut hair.
-                  </p>
+                  <p>{barber.description}.</p>
                 </Title>
-                <Calendar dateTime={bk} />
+                <Calendar dateTime={bk} barberId={barber.id} userId={userId} />
               </Col>
             </Row>
           </Container>
@@ -94,17 +95,24 @@ function BarberPage({ Bookings, ...props }) {
     </Col>
   );
 }
-function mapDispatchToProps(dispatch) {
-  return {
-    Bookings: () => dispatch(bookingActions.Bookings()),
-  };
+
+function getBookBySlug(barbers, slug) {
+  return barbers.find(barber => barber.id === parseInt(slug));
 }
 
-function mapStateToProps(state) {
+function mapStateToProps(state, ownProps) {
+  const slug = ownProps.match.params.slug;
   return {
     user: state.user,
     barber: state.barber,
     bookings: state.booking,
+    barbers: getBookBySlug(state.barber, slug),
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    Bookings: () => dispatch(bookingActions.Bookings()),
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(BarberPage);

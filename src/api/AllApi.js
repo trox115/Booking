@@ -9,7 +9,7 @@ export function getBarbers() {
     .catch(erro => erro);
 }
 
-export default function createBooking(date, time) {
+export default function createBooking(date, time, user, barber) {
   return axios
     .post(
       'http://localhost:3001/bookings',
@@ -17,6 +17,8 @@ export default function createBooking(date, time) {
         booking: {
           date,
           hour: time,
+          user_id: user,
+          barber_id: barber,
         },
       },
       { withCredentials: true },

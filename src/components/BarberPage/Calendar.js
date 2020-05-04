@@ -7,16 +7,20 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 function Calendar({ ...props }) {
   let blockdays = [];
-  const dateTime = { props };
+  let groupedData = null;
+  const { userId, barberId } = props;
+  const { dateTime } = props;
   const blockHours = [setHours(setMinutes(new Date(), 0), 10)];
   let all = null;
   function cToObject(bk) {
-    const groupedData = bk.reduce((results, item) => {
-      results[item.date] = results[item.date] || [];
-      results[item.date].push(item.hour);
+    if (bk !== null) {
+      groupedData = bk.reduce((results, item) => {
+        results[item.date] = results[item.date] || [];
+        results[item.date].push(item.hour);
 
-      return results;
-    }, {});
+        return results;
+      }, {});
+    }
     for (let i = 0; i < Object.keys(groupedData).length; i += 1) {
       if (Object.values(groupedData)[i].length >= 8) {
         blockdays.push(new Date(Object.keys(groupedData)[i]));
@@ -25,6 +29,7 @@ function Calendar({ ...props }) {
     all = groupedData;
     return groupedData;
   }
+  console.log(dateTime);
   cToObject(dateTime);
   const [startDate, setStartDate] = useState(new Date());
   const [startTime, setStartTime] = useState(
@@ -52,13 +57,14 @@ function Calendar({ ...props }) {
     const day = novaDaata.getDate();
     const newDate = `${year}/${month}/${day}`;
     const hour = startTime.getHours();
-    createBooking(newDate, hour);
+    createBooking(newDate, hour, userId, barberId);
   }
 
   function handleChange(e) {
     setStartDate(e);
     blockdays = [];
   }
+  console.log(props);
   return (
     <form onSubmit={onSubmit}>
       <DatePicker

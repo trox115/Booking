@@ -8,6 +8,7 @@ import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
@@ -93,26 +94,28 @@ function HomePage({ ...props }) {
   let allbarber = [];
   allbarber = barber.map(barbers => (
     <Service key={barbers.id} currentColor={barbers.color}>
-      <div className="image-place">
-        <img src={`./${barbers.phto}.png`} alt={barbers.name} />
-      </div>
-      <div className="barber-name">
-        <p>{barbers.name}</p>
-      </div>
-      <div className="details">
-        <p>{barbers.shortD}</p>
-      </div>
-      <div className="social">
-        <a href={barbers.tw}>
-          <FontAwesomeIcon icon={faTwitter} />
-        </a>
-        <a href={barbers.fb}>
-          <FontAwesomeIcon icon={faFacebook} />
-        </a>
-        <a href={barbers.ins}>
-          <FontAwesomeIcon icon={faInstagram} />
-        </a>
-      </div>
+      <Link to={`/barber/${barbers.id}`}>
+        <div className="image-place">
+          <img src={`./${barbers.phto}.png`} alt={barbers.name} />
+        </div>
+        <div className="barber-name">
+          <p>{barbers.name}</p>
+        </div>
+        <div className="details">
+          <p>{barbers.shortD}</p>
+        </div>
+        <div className="social">
+          <a href={barbers.tw}>
+            <FontAwesomeIcon icon={faTwitter} />
+          </a>
+          <a href={barbers.fb}>
+            <FontAwesomeIcon icon={faFacebook} />
+          </a>
+          <a href={barbers.ins}>
+            <FontAwesomeIcon icon={faInstagram} />
+          </a>
+        </div>
+      </Link>
     </Service>
   ));
 
