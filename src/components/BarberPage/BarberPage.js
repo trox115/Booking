@@ -54,18 +54,22 @@ const Title = styled.div`
 `;
 
 function BarberPage({ Bookings, ...props }) {
-  const [bk, setBk] = useState(null);
-  const test = async () => {
-    const data = await Bookings();
-    setBk(data);
+  const [bk, setBooking] = useState([]);
+  let i = 0;
+  useEffect(async () => {
+    async function fetchData() {
+      const response = await fetch('http://localhost:3001/bookings');
+      const data = await response.json();
+      setBooking(await data);
+    }
 
-  };
+    i = 1;
+    fetchData();
+  }, [i]);
 
   useEffect(() => {
-    if (bk === null) {
-      test();
-    }
-  }, data);
+    console.log('modificado');
+  }, [bk]);
 
   return (
     <Col md="10 p-0" className="barber">
@@ -81,7 +85,7 @@ function BarberPage({ Bookings, ...props }) {
                     good to cut hair.
                   </p>
                 </Title>
-                <Calendar />
+                <Calendar dateTime={bk} />
               </Col>
             </Row>
           </Container>
@@ -92,7 +96,6 @@ function BarberPage({ Bookings, ...props }) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    loadBarbers: () => dispatch(bookingActions.Barbers()),
     Bookings: () => dispatch(bookingActions.Bookings()),
   };
 }

@@ -34,7 +34,6 @@ export function Barbers() {
 }
 
 export function bookingSuccess(booking) {
-  const bk = booking.data;
   return { type: 'CREATE_BOOKING', booking };
 }
 export function Bookings() {
