@@ -8,15 +8,23 @@ import 'react-datepicker/dist/react-datepicker.css';
 function Calendar({ ...props }) {
   let blockdays = [];
   let groupedData = null;
-  const { userId, barberId } = props;
+  const { barberId } = props;
+  const userId = 4;
   const { dateTime } = props;
   const blockHours = [setHours(setMinutes(new Date(), 0), 10)];
   let all = null;
+  function isSameBarber(obj) {
+    console.log(obj);
+  }
+
   function cToObject(bk) {
     if (bk !== null) {
       groupedData = bk.reduce((results, item) => {
-        results[item.date] = results[item.date] || [];
-        results[item.date].push(item.hour);
+        if (results[item.barber_id] === barberId) {
+          console.log('teste', item.barber_id);
+          results[item.date] = results[item.date] || [];
+          results[item.date].push(item.hour);
+        }
 
         return results;
       }, {});
@@ -26,11 +34,13 @@ function Calendar({ ...props }) {
         blockdays.push(new Date(Object.keys(groupedData)[i]));
       }
     }
+    console.log('data ', groupedData);
     all = groupedData;
     return groupedData;
   }
-  console.log(dateTime);
+
   cToObject(dateTime);
+
   const [startDate, setStartDate] = useState(new Date());
   const [startTime, setStartTime] = useState(
     setHours(setMinutes(new Date(), 0), 8),
@@ -44,6 +54,7 @@ function Calendar({ ...props }) {
     const newDate = `${year}/${month}/${day}`;
     if (all[newDate]) {
       for (let i = 0; i < all[newDate].length; i += 1) {
+        console.log('aqui', all);
         blockHours.push(setHours(setMinutes(new Date(), 0), all[newDate][i]));
       }
     }

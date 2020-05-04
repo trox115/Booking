@@ -58,7 +58,8 @@ const Title = styled.div`
 function BarberPage({ Bookings, ...props }) {
   const [bk, setBooking] = useState([]);
   const { user } = props;
-  const userId = user[0].user.id;
+  // const userId = user[0].user.id;
+  const userId = 4;
 
   console.log(userId);
   const [barber, setBarber] = useState({ ...props.barbers });
@@ -96,7 +97,7 @@ function BarberPage({ Bookings, ...props }) {
   );
 }
 
-function getBookBySlug(barbers, slug) {
+function getBarberBySlug(barbers, slug) {
   return barbers.find(barber => barber.id === parseInt(slug));
 }
 
@@ -106,7 +107,7 @@ function mapStateToProps(state, ownProps) {
     user: state.user,
     barber: state.barber,
     bookings: state.booking,
-    barbers: getBookBySlug(state.barber, slug),
+    barbers: getBarberBySlug(state.barber, slug),
   };
 }
 
