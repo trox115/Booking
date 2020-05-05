@@ -53,15 +53,10 @@ function NavBar() {
   return (
     <Col md="2" sm="2">
       <Nav className="nav flex-column nav-pills nav-fill">
-        <SingleLink className="navbar-brand" href="/">
+        <SingleLink className="navbar-brand" href="/home">
           <Brand>Barber</Brand>
         </SingleLink>
-        <NavLink
-          to="/barbers"
-          className="nav-link"
-          activeClassName="active"
-          exact
-        >
+        <NavLink to="/home" className="nav-link" activeClassName="active" exact>
           Barbers
         </NavLink>
         <NavLink

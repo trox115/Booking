@@ -8,9 +8,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 function Calendar({ ...props }) {
   let blockdays = [];
-  console.log(props);
   let groupedData = null;
-  const { barberId, userId, history, dateTime } = props;
+  const {
+    barberId, userId, history, dateTime,
+  } = props;
 
   const blockHours = [];
   let all = null;

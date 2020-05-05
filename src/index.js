@@ -6,8 +6,17 @@ import configureStore from './configureStore';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-const store = configureStore();
+function saveToLocalStorage(state) {
+  try {
+    const serializedState = JSON.stringify(state);
+    localStorage.setItem('state', serializedState);
+  } catch (e) {
+    console.log('error', e);
+  }
+}
 
+const store = configureStore();
+store.subscribe(() => saveToLocalStorage(store.getState()));
 ReactDOM.render(
   <Provider store={store}>
     <Router>
