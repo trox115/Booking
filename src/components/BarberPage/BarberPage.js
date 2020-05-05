@@ -60,10 +60,11 @@ const Title = styled.div`
   }
 `;
 
-function BarberPage({ Bookings, user, ...props }) {
+function BarberPage({ Bookings, ...props }) {
   const [bk, setBooking] = useState([]);
   console.log({ ...props });
-  const userId = props.user.user_id;
+  const { user } = props;
+  const userId = user[0].user.id;
   const { barbers } = props;
   // eslint-disable-next-line no-unused-vars
   const [barber, setBarber] = useState({ ...barbers });
