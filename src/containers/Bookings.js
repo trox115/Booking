@@ -28,7 +28,6 @@ function Booking() {
     }
   }, [booking]);
   if (bks !== []) {
-    console.log(bks);
     return (
       <>
         <table>
