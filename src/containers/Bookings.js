@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Table from '../components/table';
-import style from 'styled-components';
-import styled from 'styled-components';
 
 function Booking() {
   const [booking, setBooking] = useState(null);
@@ -12,7 +10,7 @@ function Booking() {
       .get('http://localhost:3001/show', { withCredentials: true })
       .then(response => {
         const { data } = response;
-        console.log('date', data);
+
         setBooking(data);
       });
   }
@@ -28,7 +26,6 @@ function Booking() {
     }
   }, [booking]);
   if (bks !== []) {
-    console.log(bks);
     return (
       <>
         <table>

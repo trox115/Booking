@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { Switch, Route } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -19,9 +20,7 @@ function App({ user }) {
   function isLoggedIn() {
     axios
       .get('http://localhost.com:3001/loggedin', { withCredentials: true })
-      .then(response => {
-        console.log('loggedIn', response);
-      });
+      .then(response => response);
   }
 
   useEffect(() => {
@@ -50,4 +49,8 @@ function mapStateToProps(state) {
     user: state.user,
   };
 }
+
+App.propTypes = {
+  user: PropTypes.instanceOf(Array).isRequired,
+};
 export default connect(mapStateToProps)(App);

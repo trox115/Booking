@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import PropTypes from 'prop-types';
 
 function Table({ key, date, hour }) {
   return (
@@ -10,5 +11,9 @@ function Table({ key, date, hour }) {
     </tbody>
   );
 }
-
+Table.propTypes = {
+  key: PropTypes.number.isRequired,
+  date: PropTypes.string.isRequired,
+  hour: PropTypes.number.isRequired,
+};
 export default Table;
