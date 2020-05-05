@@ -35,7 +35,7 @@ export function session({ ...props }) {
       },
       { withCredentials: true },
     )
-    .then(response => response.data)
+    .then(response => response)
     .catch(erro => erro);
 }
 
