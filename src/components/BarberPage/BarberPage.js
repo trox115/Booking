@@ -62,13 +62,15 @@ const Title = styled.div`
 
 function BarberPage({ Bookings, ...props }) {
   const [bk, setBooking] = useState([]);
-  const userId = 4;
-
+  console.log({ ...props });
+  userId = props.user.user_id;
   const { barbers } = props;
   // eslint-disable-next-line no-unused-vars
   const [barber, setBarber] = useState({ ...barbers });
   async function fetchData() {
-    const response = await fetch('https://antonio-barber-api.herokuapp.com/barbers');
+    const response = await fetch(
+      'https://antonio-barber-api.herokuapp.com/barbers',
+    );
     const data = await response.json();
     setBooking(await data);
   }

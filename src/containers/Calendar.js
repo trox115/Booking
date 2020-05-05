@@ -65,7 +65,9 @@ function Calendar({ ...props }) {
     const day = novaDaata.getDate();
     const newDate = `${year}/${month}/${day}`;
     const hour = startTime.getHours();
-    createBooking(newDate, hour, userId, barberId).then(history.push('/home'));
+    createBooking(newDate, hour, userId, barberId).then(() => {
+      history.push('/home');
+    });
   }
 
   function handleChange(e) {
