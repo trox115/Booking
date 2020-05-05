@@ -89,7 +89,7 @@ function HomePage({ ...props }) {
   useEffect(() => {
     const { loadBarbers } = props;
     loadBarbers();
-  }, [1]);
+  }, barber);
 
   let allbarber = [];
   allbarber = barber.map(barbers => (

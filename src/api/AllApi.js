@@ -5,7 +5,7 @@ const baseUrl = 'https://antonio-barber-api.herokuapp.com/barbers';
 export function getBarbers() {
   return axios
     .get(baseUrl, { withCredentials: true })
-    .then(response => response.data)
+    .then(response => response)
     .catch(erro => erro);
 }
 
