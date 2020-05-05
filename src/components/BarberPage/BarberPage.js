@@ -1,19 +1,26 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
+import Calendar from './Calendar';
+import * as bookingActions from '../../actions/Actions';
 
+const color = ({ currentColor }) => currentColor;
+const barberphto = ({ currentphoto }) => currentphoto;
 const Overlay = styled.div`
   min-width: 100%;
   height: 100vh;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: ${color};
+  opacity: 0.7;
   margin-left: -10px;
   z-index: 2;
 `;
 
 const BarberPic = styled.div`
-  background: url('/barber1.png');
+  background-image: url(${barberphto});
   height: 100%;
   width: 100%;
   background-repeat: no-repeat;
@@ -49,22 +56,38 @@ const Title = styled.div`
   }
 `;
 
-function BarberPage() {
+function BarberPage({ Bookings, ...props }) {
+  const [bk, setBooking] = useState([]);
+  const userId = 4;
+
+  const { barbers } = props;
+  // eslint-disable-next-line no-unused-vars
+  const [barber, setBarber] = useState({ ...barbers });
+
+  useEffect(async () => {
+    async function fetchData() {
+      const response = await fetch('http://localhost:3001/bookings');
+      const data = await response.json();
+      setBooking(await data);
+    }
+
+    fetchData();
+  }, [0]);
+  const photo = `/${barber.phto}.png`;
   return (
     <Col md="10 p-0" className="barber">
-      <BarberPic>
-        <Overlay>
+      <BarberPic currentphoto={photo}>
+        <Overlay currentColor={barber.color}>
           <Container className="fill">
             <Row className="align-items-center h-100">
               <Col md="12">
                 <Title>
                   <h3>Book this barber now</h3>
                   <p>
-                    This barber has 10 years experience, formed in USA is very
-                    good to cut hair.
+                    {barber.description}
                   </p>
-                  <button type="button">Book now</button>
                 </Title>
+                <Calendar dateTime={bk} barberId={barber.id} userId={userId} />
               </Col>
             </Row>
           </Container>
@@ -74,4 +97,28 @@ function BarberPage() {
   );
 }
 
-export default BarberPage;
+function getBarberBySlug(barbers, slug) {
+  return barbers.find(barber => barber.id === parseInt(slug, 10));
+}
+
+function mapStateToProps(state, ownProps) {
+  const { slug } = ownProps.match.params;
+  return {
+    user: state.user,
+    barber: state.barber,
+    bookings: state.booking,
+    barbers: getBarberBySlug(state.barber, slug),
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    Bookings: () => dispatch(bookingActions.Bookings()),
+  };
+}
+BarberPage.propTypes = {
+  Bookings: PropTypes.func.isRequired,
+  user: PropTypes.instanceOf(Array).isRequired,
+  barbers: PropTypes.instanceOf(Array).isRequired,
+};
+export default connect(mapStateToProps, mapDispatchToProps)(BarberPage);

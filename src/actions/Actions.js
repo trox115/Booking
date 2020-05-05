@@ -33,4 +33,20 @@ export function Barbers() {
   };
 }
 
+export function bookingSuccess(booking) {
+  return { type: 'CREATE_BOOKING', booking };
+}
+export function Bookings() {
+  return function unamed2(dispatch) {
+    return barbers
+      .getBookings()
+      .then(response => {
+        dispatch(bookingSuccess(response));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+}
+
 export default Login;
