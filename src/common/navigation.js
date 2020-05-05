@@ -56,7 +56,12 @@ function NavBar() {
         <SingleLink className="navbar-brand" href="/">
           <Brand>Barber</Brand>
         </SingleLink>
-        <NavLink to="/" className="nav-link" activeClassName="active" exact>
+        <NavLink
+          to="/barbers"
+          className="nav-link"
+          activeClassName="active"
+          exact
+        >
           Barbers
         </NavLink>
         <NavLink

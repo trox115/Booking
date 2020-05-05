@@ -1,11 +1,11 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3001/barbers';
+const baseUrl = 'https://antonio-barber-api.herokuapp.com/barbers';
 
 export function getBarbers() {
   return axios
     .get(baseUrl, { withCredentials: true })
-    .then(response => response)
+    .then(response => response.data)
     .catch(erro => erro);
 }
 
