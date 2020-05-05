@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -57,24 +58,21 @@ const Title = styled.div`
 
 function BarberPage({ Bookings, ...props }) {
   const [bk, setBooking] = useState([]);
-  const { user } = props;
-  // const userId = user[0].user.id;
   const userId = 4;
 
-  console.log(userId);
-  const [barber, setBarber] = useState({ ...props.barbers });
+  const { barbers } = props;
+  // eslint-disable-next-line no-unused-vars
+  const [barber, setBarber] = useState({ ...barbers });
 
-  let i = 0;
   useEffect(async () => {
     async function fetchData() {
       const response = await fetch('http://localhost:3001/bookings');
       const data = await response.json();
-      console.log(data);
       setBooking(await data);
     }
 
     fetchData();
-  }, [i]);
+  }, [0]);
   const photo = `/${barber.phto}.png`;
   return (
     <Col md="10 p-0" className="barber">
@@ -85,7 +83,9 @@ function BarberPage({ Bookings, ...props }) {
               <Col md="12">
                 <Title>
                   <h3>Book this barber now</h3>
-                  <p>{barber.description}.</p>
+                  <p>
+                    {barber.description}
+                  </p>
                 </Title>
                 <Calendar dateTime={bk} barberId={barber.id} userId={userId} />
               </Col>
@@ -98,11 +98,11 @@ function BarberPage({ Bookings, ...props }) {
 }
 
 function getBarberBySlug(barbers, slug) {
-  return barbers.find(barber => barber.id === parseInt(slug));
+  return barbers.find(barber => barber.id === parseInt(slug, 10));
 }
 
 function mapStateToProps(state, ownProps) {
-  const slug = ownProps.match.params.slug;
+  const { slug } = ownProps.match.params;
   return {
     user: state.user,
     barber: state.barber,
@@ -116,4 +116,9 @@ function mapDispatchToProps(dispatch) {
     Bookings: () => dispatch(bookingActions.Bookings()),
   };
 }
+BarberPage.propTypes = {
+  Bookings: PropTypes.func.isRequired,
+  user: PropTypes.instanceOf(Array).isRequired,
+  barbers: PropTypes.instanceOf(Array).isRequired,
+};
 export default connect(mapStateToProps, mapDispatchToProps)(BarberPage);
