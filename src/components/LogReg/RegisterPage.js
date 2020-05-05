@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import barber from '../../assets/barber_login.jpg';
 import Register from '../../api/register';
@@ -79,7 +80,7 @@ const Container = styled.div`
   position: absolute;
 `;
 
-function RegisterPage() {
+function RegisterPage({ history }) {
   const [form, setState] = useState({
     email: '',
     password: '',
@@ -95,11 +96,7 @@ function RegisterPage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    Register(form)
-      .then(() => {
-        history.push('/');
-      })
-      .catch(error => error);
+    Register(form);
   }
   return (
     <Container>
@@ -137,5 +134,11 @@ function RegisterPage() {
     </Container>
   );
 }
+
+RegisterPage.propTypes = {
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
+};
 
 export default RegisterPage;

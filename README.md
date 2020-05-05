@@ -17,6 +17,9 @@ On a new version it will allow the barber to register too.
 ## Getting Started
 
 Open the [Live Demo Link](https://antoniobarberapi.herokuapp.com/) .
+If you don't want to register use this;
+- email: test@test.com
+- password: 1234 
 
 ## Author
 
