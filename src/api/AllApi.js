@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'https://antonio-barber-api.herokuapp.com/barbers';
+const baseUrl = 'http://localhost:3001/barbers';
 
 export function getBarbers() {
   return axios
