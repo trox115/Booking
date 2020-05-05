@@ -16,7 +16,7 @@ On a new version it will allow the barber to register too.
 
 ## Getting Started
 
-Open the [Live Demo Link](https://timelogger.netlify.com/) and enjoy.
+Open the [Live Demo Link](https://antoniobarberapi.herokuapp.com/) .
 
 ## Author
 
