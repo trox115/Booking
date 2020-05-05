@@ -1,7 +1,7 @@
-function loggedInStatus(state = [], action) {
+function loggedInStatus(state = false, action) {
   switch (action.type) {
     case 'Login':
-      return state;
+      return !state;
 
     default:
       return state;

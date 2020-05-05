@@ -34,6 +34,13 @@ export function getBookings() {
     .catch(erro => erro);
 }
 
+export function getMyBookings() {
+  return axios
+    .get('http://localhost:3001/bookings/show', { withCredentials: true })
+    .then(response => response)
+    .catch(erro => erro);
+}
+
 // export default function createBooking(date, time) {
 //   const bookings = {
 //     booking: {
