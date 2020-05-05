@@ -87,7 +87,6 @@ function RegisterPage() {
   });
 
   function handleChange(event) {
-    console.log(event.target.name);
     setState({
       ...form,
       [event.target.name]: event.target.value,

@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3001/barbers';
+const baseUrl = 'https://antonio-barber-api.herokuapp.com/barbers';
 
 export function getBarbers() {
   return axios
@@ -12,7 +12,7 @@ export function getBarbers() {
 export default function createBooking(date, time, user, barber) {
   return axios
     .post(
-      'http://localhost:3001/bookings',
+      'https://antonio-barber-api.herokuapp.com/bookings',
       {
         booking: {
           date,
@@ -29,14 +29,18 @@ export default function createBooking(date, time, user, barber) {
 
 export function getBookings() {
   return axios
-    .get('http://localhost:3001/bookings', { withCredentials: true })
+    .get('https://antonio-barber-api.herokuapp.com/bookings', {
+      withCredentials: true,
+    })
     .then(response => response)
     .catch(erro => erro);
 }
 
 export function getMyBookings() {
   return axios
-    .get('http://localhost:3001/bookings/show', { withCredentials: true })
+    .get('https://antonio-barber-api.herokuapp.com/show', {
+      withCredentials: true,
+    })
     .then(response => response)
     .catch(erro => erro);
 }

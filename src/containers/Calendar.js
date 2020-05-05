@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
 import { addMonths, setHours, setMinutes } from 'date-fns';
-import createBooking from '../../api/AllApi';
+import createBooking from '../api/AllApi';
 
 import 'react-datepicker/dist/react-datepicker.css';
 

@@ -19,7 +19,7 @@ import './App.css';
 function App({ user }) {
   function isLoggedIn() {
     axios
-      .get('http://localhost.com:3001/loggedin', { withCredentials: true })
+      .get('https://antonio-barber-api.herokuapp.com/loggedin', { withCredentials: true })
       .then(response => response);
   }
 

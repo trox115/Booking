@@ -104,18 +104,18 @@ function HomePage({ ...props }) {
         <div className="details">
           <p>{barbers.shortD}</p>
         </div>
-        <div className="social">
-          <a href={barbers.tw}>
-            <FontAwesomeIcon icon={faTwitter} />
-          </a>
-          <a href={barbers.fb}>
-            <FontAwesomeIcon icon={faFacebook} />
-          </a>
-          <a href={barbers.ins}>
-            <FontAwesomeIcon icon={faInstagram} />
-          </a>
-        </div>
       </Link>
+      <div className="social">
+        <a href={barbers.tw}>
+          <FontAwesomeIcon icon={faTwitter} />
+        </a>
+        <a href={barbers.fb}>
+          <FontAwesomeIcon icon={faFacebook} />
+        </a>
+        <a href={barbers.ins}>
+          <FontAwesomeIcon icon={faInstagram} />
+        </a>
+      </div>
     </Service>
   ));
 

@@ -5,7 +5,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
-import Calendar from './Calendar';
+import Calendar from '../../containers/Calendar';
 import * as bookingActions from '../../actions/Actions';
 
 const color = ({ currentColor }) => currentColor;
@@ -17,6 +17,10 @@ const Overlay = styled.div`
   opacity: 0.7;
   margin-left: -10px;
   z-index: 2;
+
+  form {
+    text-align: center;
+  }
 `;
 
 const BarberPic = styled.div`
@@ -63,16 +67,14 @@ function BarberPage({ Bookings, ...props }) {
   const { barbers } = props;
   // eslint-disable-next-line no-unused-vars
   const [barber, setBarber] = useState({ ...barbers });
-
-  useEffect(async () => {
-    async function fetchData() {
-      const response = await fetch('http://localhost:3001/bookings');
-      const data = await response.json();
-      setBooking(await data);
-    }
-
+  async function fetchData() {
+    const response = await fetch('https://antonio-barber-api.herokuapp.com/bookings');
+    const data = await response.json();
+    setBooking(await data);
+  }
+  useEffect(() => {
     fetchData();
-  }, [0]);
+  }, [bk]);
   const photo = `/${barber.phto}.png`;
   return (
     <Col md="10 p-0" className="barber">
@@ -83,9 +85,7 @@ function BarberPage({ Bookings, ...props }) {
               <Col md="12">
                 <Title>
                   <h3>Book this barber now</h3>
-                  <p>
-                    {barber.description}
-                  </p>
+                  <p>{barber.description}</p>
                 </Title>
                 <Calendar dateTime={bk} barberId={barber.id} userId={userId} />
               </Col>

@@ -67,9 +67,6 @@ function NavBar() {
         >
           LifeStyle
         </NavLink>
-        <NavLink to="/book" className="nav-link" activeClassName="active" exact>
-          Book
-        </NavLink>
         <NavLink
           to="/bookings"
           className="nav-link"
