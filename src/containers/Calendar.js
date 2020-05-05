@@ -7,12 +7,10 @@ import createBooking from '../api/AllApi';
 import 'react-datepicker/dist/react-datepicker.css';
 
 function Calendar({ ...props }) {
-  const { history } = props;
   let blockdays = [];
   let groupedData = null;
-  const { barberId } = props;
-  const userId = 4;
-  const { dateTime } = props;
+  const { barberId, userId, history, dateTime } = props;
+
   const blockHours = [];
   let all = null;
 

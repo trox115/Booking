@@ -95,7 +95,11 @@ function RegisterPage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    Register(form);
+    Register(form)
+      .then(() => {
+        history.push('/');
+      })
+      .catch(error => error);
   }
   return (
     <Container>

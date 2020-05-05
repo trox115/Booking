@@ -99,7 +99,7 @@ function LoginPage({ createSession, history }) {
 
     createSession(form)
       .then(() => {
-        history.push('/');
+        history.push('/home');
       })
       .catch(error => error);
   }
