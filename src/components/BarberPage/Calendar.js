@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
+import PropTypes from 'prop-types';
 import { addMonths, setHours, setMinutes } from 'date-fns';
 import createBooking from '../../api/AllApi';
 
@@ -8,20 +9,17 @@ import 'react-datepicker/dist/react-datepicker.css';
 function Calendar({ ...props }) {
   let blockdays = [];
   let groupedData = null;
-  console.log(props);
   const { barberId } = props;
   const userId = 4;
   const { dateTime } = props;
   const blockHours = [];
   let all = null;
-  function isSameBarber(obj) {
-    console.log(obj);
-  }
 
   function cToObject(bk) {
     if (bk !== null) {
       groupedData = bk.reduce((results, item) => {
         if (item.barber_id === barberId) {
+          // eslint-disable-next-line no-param-reassign
           results[item.date] = results[item.date] || [];
           results[item.date].push(item.hour);
         }
@@ -34,7 +32,6 @@ function Calendar({ ...props }) {
         blockdays.push(new Date(Object.keys(groupedData)[i]));
       }
     }
-    console.log('data ', groupedData);
     all = groupedData;
     return groupedData;
   }
@@ -75,7 +72,6 @@ function Calendar({ ...props }) {
     setStartDate(e);
     blockdays = [];
   }
-  console.log(props);
   return (
     <form onSubmit={onSubmit}>
       <DatePicker
@@ -113,5 +109,8 @@ function Calendar({ ...props }) {
     </form>
   );
 }
-
+Calendar.propTypes = {
+  barberId: PropTypes.number.isRequired,
+  dateTime: PropTypes.instanceOf(Array).isRequired,
+};
 export default Calendar;
