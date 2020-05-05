@@ -68,16 +68,17 @@ function BarberPage({ Bookings, ...props }) {
   const { barbers } = props;
   // eslint-disable-next-line no-unused-vars
   const [barber, setBarber] = useState({ ...barbers });
-  async function fetchData() {
-    const response = await fetch(
-      'https://antonio-barber-api.herokuapp.com/barbers',
-    );
-    const data = await response.json();
-    setBooking(await data);
-  }
-  useEffect(() => {
+  useEffect(async () => {
+    async function fetchData() {
+      const response = await fetch(
+        'https://antonio-barber-api.herokuapp.com/barbers',
+      );
+      const data = await response.json();
+      setBooking(await data);
+    }
+
     fetchData();
-  }, [bk]);
+  }, [0]);
   const photo = `/${barber.phto}.png`;
   return (
     <Col md="10 p-0" className="barber">
