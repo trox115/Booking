@@ -70,7 +70,7 @@ function BarberPage({ Bookings, ...props }) {
   useEffect(async () => {
     async function fetchData() {
       const response = await fetch(
-        'https://antonio-barber-api.herokuapp.com/barbers',
+        'https://antonio-barber-api.herokuapp.com/bookings',
       );
       const data = await response.json();
       setBooking(await data);
