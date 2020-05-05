@@ -80,7 +80,7 @@ const Container = styled.div`
   position: absolute;
 `;
 
-function RegisterPage({ history }) {
+function RegisterPage() {
   const [form, setState] = useState({
     email: '',
     password: '',

@@ -18,7 +18,6 @@ export function Login(user) {
   };
 }
 export function barberSuccess(barber) {
-  console.log('barber', barber);
   return { type: 'CREATE_BARBER', barber };
 }
 export function Barbers() {

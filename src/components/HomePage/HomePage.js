@@ -88,7 +88,9 @@ function HomePage({ ...props }) {
   const { barber } = props;
   useEffect(() => {
     const { loadBarbers } = props;
-    loadBarbers();
+    if (barber.length <= 0) {
+      loadBarbers();
+    }
   }, barber);
 
   let allbarber = [];

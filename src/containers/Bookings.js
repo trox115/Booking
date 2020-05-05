@@ -7,7 +7,9 @@ function Booking() {
   const [bks, setBks] = useState(null);
   async function fetchData() {
     await axios
-      .get('http://localhost:3001/show', { withCredentials: true })
+      .get('https://antonio-barber-api.herokuapp.com/show', {
+        withCredentials: true,
+      })
       .then(response => {
         const { data } = response;
 
@@ -26,6 +28,7 @@ function Booking() {
     }
   }, [booking]);
   if (bks !== []) {
+    console.log(bks);
     return (
       <>
         <table>

@@ -62,7 +62,6 @@ const Title = styled.div`
 
 function BarberPage({ Bookings, ...props }) {
   const [bk, setBooking] = useState([]);
-  console.log({ ...props });
   const { user } = props;
   const userId = user[0].user.id;
   const { barbers } = props;
