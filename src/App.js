@@ -19,7 +19,9 @@ import './App.css';
 function App({ user }) {
   function isLoggedIn() {
     axios
-      .get('https://antonio-barber-api.herokuapp.com/loggedin', { withCredentials: true })
+      .get('https://antonio-barber-api.herokuapp.com/loggedin', {
+        withCredentials: true,
+      })
       .then(response => response);
   }
 
@@ -32,9 +34,9 @@ function App({ user }) {
         <Row>
           <NavBar />
           <Switch>
-            <Route exact path="/" component={HomePage} />
+            <Route exact path="/" component={LoginPage} />
             <Route exact path="/register" component={RegisterPage} />
-            <Route exact path="/login" component={LoginPage} />
+            <Route exact path="/home" component={HomePage} />
             <Route exact path="/bookings" component={Bookings} />
             <Route exact path="/lifestyle" component={LifestylePage} />
             <Route exact path="/barber/:slug" component={BarberPage} />

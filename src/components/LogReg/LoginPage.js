@@ -126,6 +126,7 @@ function LoginPage({ createSession, history }) {
               value={form.password}
             />
             <button type="submit"> Login </button>
+            <a href="/register">Register</a>
           </form>
         </div>
       </Login>

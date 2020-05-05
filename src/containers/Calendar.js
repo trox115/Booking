@@ -7,6 +7,7 @@ import createBooking from '../api/AllApi';
 import 'react-datepicker/dist/react-datepicker.css';
 
 function Calendar({ ...props }) {
+  const { history } = props;
   let blockdays = [];
   let groupedData = null;
   const { barberId } = props;
@@ -66,6 +67,7 @@ function Calendar({ ...props }) {
     const newDate = `${year}/${month}/${day}`;
     const hour = startTime.getHours();
     createBooking(newDate, hour, userId, barberId);
+    history.push('/home');
   }
 
   function handleChange(e) {
@@ -112,5 +114,8 @@ function Calendar({ ...props }) {
 Calendar.propTypes = {
   barberId: PropTypes.number.isRequired,
   dateTime: PropTypes.instanceOf(Array).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 export default Calendar;
