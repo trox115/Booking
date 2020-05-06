@@ -7,12 +7,12 @@ function Booking() {
   const [bks, setBks] = useState(null);
   async function fetchData() {
     return axios
-      .get('https://antonio-barber-api.herokuapp.com/show', {
+      .get('http://localhost:3001/show', {
         withCredentials: true,
       })
       .then(response => {
         const { data } = response;
-
+        console.log(data)
         setBooking(data);
       });
   }
@@ -20,8 +20,21 @@ function Booking() {
     if (booking === null) {
       fetchData();
     } else {
+      const array = [];
+      for (let i=0; i<booking.length;i+=1){
+        const jsDate = new Date(booking[i].book_time)
+           
+          const year = jsDate.getFullYear();
+    const day = jsDate.getDate();
+        const month = jsDate.getMonth() + 1;
+
+    const date = `${year}/${month}/${day}`;
+    const hour = jsDate.getHours();
+        array.push({id:booking[i].id, date, hour})
+      }
+      console.log(array)
       setBks(
-        booking.map(bookings => (
+        array.map(bookings => (
           <Table key={bookings.id} date={bookings.date} hour={bookings.hour} />
         )),
       );

@@ -19,6 +19,17 @@ function Calendar({ history, ...props }) {
     if (bk !== null) {
       groupedData = bk.reduce((results, item) => {
         if (item.barber_id === barberId) {
+          const jsDate = new Date(item.book_time)
+           
+          const year = jsDate.getFullYear();
+    const day = jsDate.getDate();
+        const month = jsDate.getMonth() + 1;
+
+    const newDate = `${year}/${month}/${day}`;
+    const hour = jsDate.getHours();
+          // eslint-disable-next-line no-param-reassign
+          results[newDate] = results[newDate] || [];
+          results[newDate].push(hour);
           // eslint-disable-next-line no-param-reassign
           results[item.date] = results[item.date] || [];
           results[item.date].push(item.hour);
@@ -59,13 +70,9 @@ function Calendar({ history, ...props }) {
 
   function onSubmit(event) {
     event.preventDefault();
-    const novaDaata = new Date(startDate);
-    const year = novaDaata.getFullYear();
-    const month = novaDaata.getMonth() + 1;
-    const day = novaDaata.getDate();
-    const newDate = `${year}/${month}/${day}`;
-    const hour = startTime.getHours();
-    createBooking(newDate, hour, userId, barberId)
+    const finalBooking= setHours(setMinutes(new Date(startDate), 0), startTime.getHours())
+    console.log(finalBooking)
+    createBooking(userId, barberId,finalBooking)
       .then(() => {
         history.push('/bookings');
       })

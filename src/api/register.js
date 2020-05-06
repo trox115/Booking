@@ -7,7 +7,7 @@ function Register({ ...props }) {
 
   return axios
     .post(
-      'https://antonio-barber-api.herokuapp.com/registrations',
+      'http://localhost:3001/registrations',
       {
         user: {
           email,
@@ -26,7 +26,7 @@ export function session({ ...props }) {
 
   return axios
     .post(
-      'https://antonio-barber-api.herokuapp.com/sessions',
+      'http://localhost:3001/sessions',
       {
         user: {
           email,
