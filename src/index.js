@@ -12,7 +12,7 @@ function saveToLocalStorage(state) {
     localStorage.setItem('state', serializedState);
   } catch (e) {
     // eslint-disable-next-line no-console
-    return e
+    console.log(e);
   }
 }
 

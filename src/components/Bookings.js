@@ -7,7 +7,7 @@ function Booking() {
   const [bks, setBks] = useState(null);
   async function fetchData() {
     return axios
-      .get('http://localhost:3001/show', {
+      .get('https://antonio-barber-api.herokuapp.com/show', {
         withCredentials: true,
       })
       .then(response => {

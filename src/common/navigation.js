@@ -4,6 +4,7 @@ import Nav from 'react-bootstrap/Nav';
 import { NavLink } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookF,
@@ -33,7 +34,17 @@ const SingleLink = styled.a`
   color: black;
   cursor: pointer;
 `;
-
+const Button = styled.button`
+  margin-left: 10px;
+  font-family: 'Lato', black;
+  font-weight: 600;
+  text-align: left;
+  color: black;
+  cursor: pointer;
+  border: none;
+  background-color: transparent;
+  outline: none;
+`;
 const Social = styled.div`
   position: absolute;
   bottom: 0;
@@ -81,9 +92,9 @@ function NavBar({ logout }) {
         >
           Your Bookkings
         </NavLink>
-        <a href="#" onClick={handleClick} className="nav-link">
+        <Button type="button" onClick={handleClick} className="nav-link rem">
           Logout
-        </a>
+        </Button>
         <Social>
           <FontAwesomeIcon icon={faTwitter} />
           <FontAwesomeIcon icon={faFacebookF} />
@@ -103,4 +114,8 @@ function mapDispatchToProps(dispatch) {
     logout: () => dispatch(logout.logout()),
   };
 }
+NavBar.propTypes = {
+  logout: PropTypes.func.isRequired,
+};
+
 export default connect(null, mapDispatchToProps)(NavBar);
