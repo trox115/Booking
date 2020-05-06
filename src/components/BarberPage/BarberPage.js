@@ -68,7 +68,7 @@ function BarberPage({ history, Bookings, ...props }) {
   // eslint-disable-next-line no-unused-vars
   const [barber, setBarber] = useState({ ...barbers });
   async function fetchData() {
-    const response = await fetch('https://antonio-barber-api.herokuapp.com/bookings');
+    const response = await fetch('http://localhost:3001/bookings');
     const data = await response.json();
     setBooking(await data);
   }
