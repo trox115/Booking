@@ -1,4 +1,5 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Nav from 'react-bootstrap/Nav';
 import { NavLink } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
@@ -11,6 +12,7 @@ import {
   faVimeoV,
   faPinterestP,
 } from '@fortawesome/free-brands-svg-icons';
+import * as logout from '../actions/Actions';
 
 const Brand = styled.h1`
   font-family: 'Pacifico', cursive;
@@ -49,14 +51,18 @@ const CopyWright = styled.div`
     font-size: 11px;
   }
 `;
-function NavBar() {
+function NavBar({ logout }) {
+  function handleClick() {
+    logout();
+  }
+
   return (
     <Col md="2" sm="2">
       <Nav className="nav flex-column nav-pills nav-fill">
-        <SingleLink className="navbar-brand" href="/home">
+        <SingleLink className="navbar-brand" href="/">
           <Brand>Barber</Brand>
         </SingleLink>
-        <NavLink to="/home" className="nav-link" activeClassName="active" exact>
+        <NavLink to="/" className="nav-link" activeClassName="active" exact>
           Barbers
         </NavLink>
         <NavLink
@@ -75,6 +81,9 @@ function NavBar() {
         >
           Your Bookkings
         </NavLink>
+        <a href="#" onClick={handleClick} className="nav-link">
+          Logout
+        </a>
         <Social>
           <FontAwesomeIcon icon={faTwitter} />
           <FontAwesomeIcon icon={faFacebookF} />
@@ -89,5 +98,9 @@ function NavBar() {
     </Col>
   );
 }
-
-export default NavBar;
+function mapDispatchToProps(dispatch) {
+  return {
+    logout: () => dispatch(logout.logout()),
+  };
+}
+export default connect(null, mapDispatchToProps)(NavBar);

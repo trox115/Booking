@@ -60,24 +60,21 @@ const Title = styled.div`
   }
 `;
 
-function BarberPage({ Bookings, ...props }) {
+function BarberPage({ history, Bookings, ...props }) {
   const [bk, setBooking] = useState([]);
   const { user } = props;
   const userId = user[0].user.id;
   const { barbers } = props;
   // eslint-disable-next-line no-unused-vars
   const [barber, setBarber] = useState({ ...barbers });
-  useEffect(async () => {
-    async function fetchData() {
-      const response = await fetch(
-        'https://antonio-barber-api.herokuapp.com/bookings',
-      );
-      const data = await response.json();
-      setBooking(await data);
-    }
-
+  async function fetchData() {
+    const response = await fetch('https://antonio-barber-api.herokuapp.com/bookings');
+    const data = await response.json();
+    setBooking(await data);
+  }
+  useEffect(() => {
     fetchData();
-  }, [0]);
+  }, []);
   const photo = `/${barber.phto}.png`;
   return (
     <Col md="10 p-0" className="barber">
@@ -90,7 +87,12 @@ function BarberPage({ Bookings, ...props }) {
                   <h3>Book this barber now</h3>
                   <p>{barber.description}</p>
                 </Title>
-                <Calendar dateTime={bk} barberId={barber.id} userId={userId} />
+                <Calendar
+                  dateTime={bk}
+                  barberId={barber.id}
+                  userId={userId}
+                  history={history}
+                />
               </Col>
             </Row>
           </Container>
@@ -122,6 +124,9 @@ function mapDispatchToProps(dispatch) {
 BarberPage.propTypes = {
   Bookings: PropTypes.func.isRequired,
   user: PropTypes.instanceOf(Array).isRequired,
-  barbers: PropTypes.instanceOf(Array).isRequired,
+  barbers: PropTypes.shape({ id: PropTypes.number.isRequired }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(BarberPage);

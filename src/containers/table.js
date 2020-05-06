@@ -6,7 +6,10 @@ function Table({ key, date, hour }) {
     <tbody>
       <tr key>
         <td key={key}>{date}</td>
-        <td key={key}>{hour}</td>
+        <td key={key}>
+          {hour}
+          :00h
+        </td>
       </tr>
     </tbody>
   );

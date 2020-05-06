@@ -48,5 +48,36 @@ export function Bookings() {
       });
   };
 }
+export function deleteSe(response) {
+  return { type: 'DELETE_SESSION', response };
+}
 
-export default Login;
+export function logout() {
+  return function unamed(dispatch) {
+    return barbers
+      .deleteSession()
+      .then(response => {
+        dispatch(deleteSe(response));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+}
+
+export function authSuccess(response) {
+  return { type: 'CREATE_AUTH', response };
+}
+
+export function isAuthenticated() {
+  return function unamed(dispatch) {
+    return barbers
+      .isLoggedIn()
+      .then(response => {
+        dispatch(authSuccess(response));
+      })
+      .catch(error => {
+        throw error;
+      });
+  };
+}

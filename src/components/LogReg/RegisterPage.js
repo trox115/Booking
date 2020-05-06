@@ -80,7 +80,7 @@ const Container = styled.div`
   position: absolute;
 `;
 
-function RegisterPage() {
+function RegisterPage({ history }) {
   const [form, setState] = useState({
     email: '',
     password: '',
@@ -96,7 +96,11 @@ function RegisterPage() {
 
   function handleSubmit(e) {
     e.preventDefault();
-    Register(form);
+    Register(form)
+      .then(() => {
+        history.push('/');
+      })
+      .catch(error => error);
   }
   return (
     <Container>

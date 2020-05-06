@@ -5,7 +5,7 @@ function Register({ ...props }) {
   // eslint-disable-next-line camelcase
   const { email, password, password_confirmation } = props;
 
-  axios
+  return axios
     .post(
       'https://antonio-barber-api.herokuapp.com/registrations',
       {

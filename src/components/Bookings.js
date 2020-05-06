@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Table from '../components/table';
+import Table from '../containers/table';
 
 function Booking() {
   const [booking, setBooking] = useState(null);
   const [bks, setBks] = useState(null);
   async function fetchData() {
-    await axios
+    return axios
       .get('https://antonio-barber-api.herokuapp.com/show', {
         withCredentials: true,
       })

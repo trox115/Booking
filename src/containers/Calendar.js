@@ -2,16 +2,15 @@ import React, { useState, useEffect } from 'react';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
 import { addMonths, setHours, setMinutes } from 'date-fns';
+import { Route, Redirect } from 'react-router-dom';
 import createBooking from '../api/AllApi';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
-function Calendar({ ...props }) {
+function Calendar({ history, ...props }) {
   let blockdays = [];
   let groupedData = null;
-  const {
-    barberId, userId, history, dateTime,
-  } = props;
+  const { barberId, userId, dateTime } = props;
 
   const blockHours = [];
   let all = null;
@@ -66,9 +65,11 @@ function Calendar({ ...props }) {
     const day = novaDaata.getDate();
     const newDate = `${year}/${month}/${day}`;
     const hour = startTime.getHours();
-    createBooking(newDate, hour, userId, barberId).then(() => {
-      history.push('/home');
-    });
+    createBooking(newDate, hour, userId, barberId)
+      .then(() => {
+        history.push('/bookings');
+      })
+      .catch(error => error);
   }
 
   function handleChange(e) {

@@ -1,10 +1,9 @@
-function loggedInStatus(state = false, action) {
+function loggedInStatus(action) {
   switch (action.type) {
-    case 'Login':
-      return !state;
-
+    case 'CREATE_AUTH':
+      return action.response.data.logged_in;
     default:
-      return state;
+      return false;
   }
 }
 

@@ -1,12 +1,11 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
-import axios from 'axios';
+import ProtectedRoute from './containers/protected.route';
 import LoginPage from './components/LogReg/LoginPage';
-import Bookings from './containers/Bookings';
+import Bookings from './components/Bookings';
 import RegisterPage from './components/LogReg/RegisterPage';
 import HomePage from './components/HomePage/HomePage';
 import LifestylePage from './components/LifestylePage/LifestylePage';
@@ -16,30 +15,19 @@ import NavBar from './common/navigation';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-function App({ user }) {
-  function isLoggedIn() {
-    axios
-      .get('https://antonio-barber-api.herokuapp.com/loggedin', {
-        withCredentials: true,
-      })
-      .then(response => response);
-  }
-
-  useEffect(() => {
-    isLoggedIn();
-  }, user);
+function App() {
   return (
     <>
       <Container fluid>
         <Row>
           <NavBar />
           <Switch>
-            <Route exact path="/" component={LoginPage} />
+            <Route exact path="/login" component={LoginPage} />
             <Route exact path="/register" component={RegisterPage} />
-            <Route exact path="/home" component={HomePage} />
-            <Route exact path="/bookings" component={Bookings} />
-            <Route exact path="/lifestyle" component={LifestylePage} />
-            <Route exact path="/barber/:slug" component={BarberPage} />
+            <ProtectedRoute exact path="/" component={HomePage} />
+            <ProtectedRoute exact path="/bookings" component={Bookings} />
+            <ProtectedRoute exact path="/lifestyle" component={LifestylePage} />
+            <ProtectedRoute exact path="/barber/:slug" component={BarberPage} />
           </Switch>
         </Row>
       </Container>
@@ -49,10 +37,8 @@ function App({ user }) {
 function mapStateToProps(state) {
   return {
     user: state.user,
+    loggedInStatus: state.loggedInStatus,
   };
 }
 
-App.propTypes = {
-  user: PropTypes.instanceOf(Array).isRequired,
-};
 export default connect(mapStateToProps)(App);

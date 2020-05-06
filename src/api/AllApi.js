@@ -45,16 +45,17 @@ export function getMyBookings() {
     .catch(erro => erro);
 }
 
-// export default function createBooking(date, time) {
-//   const bookings = {
-//     booking: {
-//       date: date,
-//       hour: time,
-//     },
-//   };
-//   return fetch('http://localhost:3001/bookings', {
-//     method: 'POST',
-//     headers: { 'content-type': 'application/json' },
-//     body: JSON.stringify(bookings),
-//   });
-// }
+export function isLoggedIn() {
+  return axios
+    .get('https://antonio-barber-api.herokuapp.com/loggedin', {
+      withCredentials: true,
+    })
+    .then(response => response)
+    .catch(erro => erro);
+}
+export function deleteSession() {
+  return axios
+    .delete('https://antonio-barber-api.herokuapp.com/logout', { withCredentials: true })
+    .then(response => response)
+    .catch(erro => erro);
+}

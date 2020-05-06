@@ -12,7 +12,6 @@ const ImageLeft = styled.div`
   background-size: contain;
   background-position: left;
   background-attachment: fixed;
-
   float: left;
 `;
 
@@ -42,7 +41,6 @@ const Login = styled.div`
       text-align: center;
       margin: auto;
       display: table;
-
       input {
         width: 100%;
         margin-top: 30px;
@@ -99,7 +97,7 @@ function LoginPage({ createSession, history }) {
 
     createSession(form)
       .then(() => {
-        history.push('/home');
+        history.push('/');
       })
       .catch(error => error);
   }
