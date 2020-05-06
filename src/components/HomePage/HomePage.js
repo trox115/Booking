@@ -94,33 +94,34 @@ function HomePage({ ...props }) {
   }, barber);
 
   let allbarber = [];
+  console.log(barber)
   allbarber = barber.map(barbers => (
     <Service key={barbers.id} currentColor={barbers.color}>
       <Link to={`/barber/${barbers.id}`}>
         <div className="image-place">
-          <img src={`./${barbers.phto}.png`} alt={barbers.name} />
+          <img src={`./${barbers.photo_link}.png`} alt={barbers.name} />
         </div>
         <div className="barber-name">
           <p>{barbers.name}</p>
         </div>
         <div className="details">
-          <p>{barbers.shortD}</p>
+          <p>{barbers.short_description}</p>
         </div>
       </Link>
       <div className="social">
-        <a href={barbers.tw}>
+        <a href={barbers.twitter}>
           <FontAwesomeIcon icon={faTwitter} />
         </a>
-        <a href={barbers.fb}>
+        <a href={barbers.facebook}>
           <FontAwesomeIcon icon={faFacebook} />
         </a>
-        <a href={barbers.ins}>
+        <a href={barbers.instagram}>
           <FontAwesomeIcon icon={faInstagram} />
         </a>
       </div>
     </Service>
   ));
-
+console.log(allbarber)
   return (
     <Col md="10" sm="10">
       <Container className="fill">

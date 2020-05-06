@@ -75,7 +75,7 @@ function BarberPage({ history, Bookings, ...props }) {
   useEffect(() => {
     fetchData();
   }, []);
-  const photo = `/${barber.phto}.png`;
+  const photo = `/${barber.photo_link}.png`;
   return (
     <Col md="10 p-0" className="barber">
       <BarberPic currentphoto={photo}>
