@@ -6,59 +6,8 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import styled from 'styled-components';
 import Calendar from '../../containers/Calendar';
+import {BarberPic, Overlay, TitleBarber} from '../../styles'
 import * as bookingActions from '../../actions/Actions';
-
-const color = ({ currentColor }) => currentColor;
-const barberphto = ({ currentphoto }) => currentphoto;
-const Overlay = styled.div`
-  min-width: 100%;
-  height: 100vh;
-  background-color: ${color};
-  opacity: 0.7;
-  margin-left: -10px;
-  z-index: 2;
-
-  form {
-    text-align: center;
-  }
-`;
-
-const BarberPic = styled.div`
-  background-image: url(${barberphto});
-  height: 100%;
-  width: 100%;
-  background-repeat: no-repeat;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  background-position: left bottom;
-`;
-const Title = styled.div`
-  font-family: 'Lato', black;
-  text-align: center;
-  color: white;
-  margin: 0 25%;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  h3 {
-    font-weight: 900;
-    border-bottom: 1px solid white;
-    width: 300px;
-  }
-  p {
-    color: gray;
-    width: 300px;
-  }
-
-  button {
-    background-color: white;
-    color: black;
-    border-radius: 50% 50% 50% 50%;
-    height: 50px;
-    width: 120px;
-  }
-`;
 
 function BarberPage({ history, Bookings, ...props }) {
   const [bk, setBooking] = useState([]);
@@ -83,10 +32,10 @@ function BarberPage({ history, Bookings, ...props }) {
           <Container className="fill">
             <Row className="align-items-center h-100">
               <Col md="12">
-                <Title>
+                <TitleBarber>
                   <h3>Book this barber now</h3>
                   <p>{barber.description}</p>
-                </Title>
+                </TitleBarber>
                 <Calendar
                   dateTime={bk}
                   barberId={barber.id}

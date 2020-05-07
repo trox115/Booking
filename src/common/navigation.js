@@ -14,60 +14,15 @@ import {
   faPinterestP,
 } from '@fortawesome/free-brands-svg-icons';
 import * as logout from '../actions/Actions';
+import {Brand, SingleLink,Button,Social,CopyWright} from '../styles'
 
-const Brand = styled.h1`
-  font-family: 'Pacifico', cursive;
-  transform: rotate(-10deg);
-  text-decoration: underline;
-  font-size: 30px;
-  text-align: center;
-  color: black;
-  margin-top: 30px;
-  margin-bottom: 60px;
-`;
-
-const SingleLink = styled.a`
-  margin-left: 10px;
-  font-family: 'Lato', black;
-  font-weight: 600;
-  text-align: left;
-  color: black;
-  cursor: pointer;
-`;
-const Button = styled.button`
-  margin-left: 10px;
-  font-family: 'Lato', black;
-  font-weight: 600;
-  text-align: left;
-  color: black;
-  cursor: pointer;
-  border: none;
-  background-color: transparent;
-  outline: none;
-`;
-const Social = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  color: black;
-  margin-bottom: 30px;
-  text-align: center;
-  margin-left: 10px;
-  svg {
-    margin-left: 10px;
-  }
-`;
-const CopyWright = styled.div`
-  p {
-    font-size: 11px;
-  }
-`;
 function NavBar({ logout }) {
   function handleClick() {
     logout();
   }
 
   return (
+
     <Col md="2" sm="2">
       <Nav className="nav flex-column nav-pills nav-fill">
         <SingleLink className="navbar-brand" href="/">
