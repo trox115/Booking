@@ -1,10 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import barber from '../../assets/barber_login.jpg';
 import Register from '../../api/register';
-import {ImageLeft,Login,Container} from '../../styles'
-
+import { ImageLeft, Login, Container } from '../../styles';
 
 function RegisterPage({ history }) {
   const [form, setState] = useState({

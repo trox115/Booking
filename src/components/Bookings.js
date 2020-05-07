@@ -3,11 +3,9 @@ import { connect } from 'react-redux';
 import axios from 'axios';
 import Table from '../containers/table';
 
-function Booking({barbers}) {
+function Booking({ barbers }) {
   const [booking, setBooking] = useState(null);
   const [bks, setBks] = useState(null);
-  
-
 
   async function fetchData() {
     return axios
@@ -33,17 +31,27 @@ function Booking({barbers}) {
 
         const date = `${year}/${month}/${day}`;
         const hour = jsDate.getHours();
-        console.log(booking[i])
-        array.push({ id: booking[i].id, date, hour, barberId: booking[i].barber_id});
+
+        array.push({
+          id: booking[i].id,
+          date,
+          hour,
+          barberId: booking[i].barber_id,
+        });
       }
-      console.log(array)
+
       setBks(
         array.map(bookings => (
-          <Table key={bookings.id} date={bookings.date} hour={bookings.hour} barber={getNameFromId(bookings.barberId,barbers)}/>
+          <Table
+            key={bookings.id}
+            date={bookings.date}
+            hour={bookings.hour}
+            barber={getNameFromId(bookings.barberId, barbers)}
+          />
         )),
       );
     }
-  }, [booking]);
+  }, [booking,barbers]);
   if (bks !== []) {
     return (
       <>
@@ -62,18 +70,16 @@ function Booking({barbers}) {
   }
   return <p>No appointments for this user</p>;
 }
-function getNameFromId(id,barbers){
-      const barberName = barbers.find(barber => barber.id === id);
-          console.log(id)
-      console.log(barberName)
-      return barberName.name
+function getNameFromId(id, barbers) {
+  const barberName = barbers.find(barber => barber.id === id);
+
+  return barberName.name;
 }
 
-
 function mapStateToProps(state) {
-  return{
-  barbers: state.barber,
-  }
+  return {
+    barbers: state.barber,
+  };
 }
 
 export default connect(mapStateToProps)(Booking);

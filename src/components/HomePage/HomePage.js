@@ -3,7 +3,6 @@ import { connect } from 'react-redux';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import styled from 'styled-components';
 import Slider from 'react-slick';
 import PropTypes from 'prop-types';
 import 'slick-carousel/slick/slick.css';
@@ -16,8 +15,7 @@ import {
   faInstagram,
 } from '@fortawesome/free-brands-svg-icons';
 import * as barberActions from '../../actions/Actions';
-import {Title, Service} from '../../styles'
-
+import { Title, Service } from '../../styles';
 
 function HomePage({ ...props }) {
   const settings = {

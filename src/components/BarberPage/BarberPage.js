@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import styled from 'styled-components';
 import Calendar from '../../containers/Calendar';
 import { BarberPic, Overlay, TitleBarber } from '../../styles';
 import * as bookingActions from '../../actions/Actions';

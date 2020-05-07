@@ -1,7 +1,5 @@
-import React from 'react';
 import styled from 'styled-components';
 import barber from './assets/barber_login.jpg';
-
 
 export const ImageLeft = styled.div`
   width: 75%;
@@ -187,7 +185,6 @@ export const TitleBarber = styled.div`
     width: 120px;
   }
 `;
-
 
 export const Brand = styled.h1`
   font-family: 'Pacifico', cursive;
