@@ -12,7 +12,6 @@ function Booking() {
       })
       .then(response => {
         const { data } = response;
-        console.log(data)
         setBooking(data);
       });
   }
@@ -32,7 +31,6 @@ function Booking() {
     const hour = jsDate.getHours();
         array.push({id:booking[i].id, date, hour})
       }
-      console.log(array)
       setBks(
         array.map(bookings => (
           <Table key={bookings.id} date={bookings.date} hour={bookings.hour} />
@@ -50,7 +48,9 @@ function Booking() {
               <th>hour</th>
             </tr>
           </thead>
+          <tbody>
           {bks}
+          </tbody>
         </table>
       </>
     );
