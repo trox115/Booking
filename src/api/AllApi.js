@@ -9,8 +9,8 @@ export function getBarbers() {
     .catch(erro => erro);
 }
 
-export default function createBooking(user, barber,book_time) {
-  console.log(book_time)
+// eslint-disable-next-line camelcase
+export default function createBooking(user, barber, book_time) {
   return axios
     .post(
       'http://localhost:3001/bookings',
@@ -18,7 +18,7 @@ export default function createBooking(user, barber,book_time) {
         booking: {
           user_id: user,
           barber_id: barber,
-          book_time: book_time,
+          book_time,
         },
       },
       { withCredentials: true },
