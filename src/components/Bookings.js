@@ -15,7 +15,7 @@ function Booking({ barbers }) {
 
   async function fetchData() {
     return axios
-      .get('http://localhost:3001/show', {
+      .get('https://antoniobarberapi.herokuapp.com/show', {
         withCredentials: true,
       })
       .then(response => {

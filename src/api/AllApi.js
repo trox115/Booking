@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3001/barbers';
+const baseUrl = 'https://antoniobarberapi.herokuapp.com/barbers';
 
 export function getBarbers() {
   return axios
@@ -13,7 +13,7 @@ export function getBarbers() {
 export default function createBooking(user, barber, book_time) {
   return axios
     .post(
-      'http://localhost:3001/bookings',
+      'https://antoniobarberapi.herokuapp.com/bookings',
       {
         booking: {
           user_id: user,
@@ -29,7 +29,7 @@ export default function createBooking(user, barber, book_time) {
 
 export function getBookings() {
   return axios
-    .get('http://localhost:3001/bookings', {
+    .get('https://antoniobarberapi.herokuapp.com/bookings', {
       withCredentials: true,
     })
     .then(response => response)
@@ -38,7 +38,7 @@ export function getBookings() {
 
 export function getMyBookings() {
   return axios
-    .get('http://localhost:3001/show', {
+    .get('https://antoniobarberapi.herokuapp.com/show', {
       withCredentials: true,
     })
     .then(response => response)
@@ -47,7 +47,7 @@ export function getMyBookings() {
 
 export function isLoggedIn() {
   return axios
-    .get('http://localhost:3001/loggedin', {
+    .get('https://antoniobarberapi.herokuapp.com/loggedin', {
       withCredentials: true,
     })
     .then(response => response)
@@ -55,7 +55,7 @@ export function isLoggedIn() {
 }
 export function deleteSession() {
   return axios
-    .delete('http://localhost:3001/logout', { withCredentials: true })
+    .delete('https://antoniobarberapi.herokuapp.com/logout', { withCredentials: true })
     .then(response => response)
     .catch(erro => erro);
 }
