@@ -86,15 +86,14 @@ function HomePage({ ...props }) {
     slidesToScroll: 1,
   };
   const { barber } = props;
+  const { loadBarbers } = props;
   useEffect(() => {
-    const { loadBarbers } = props;
     if (barber.length <= 0) {
       loadBarbers();
     }
-  }, barber);
+  }, [barber, loadBarbers]);
 
   let allbarber = [];
-  console.log(barber)
   allbarber = barber.map(barbers => (
     <Service key={barbers.id} currentColor={barbers.color}>
       <Link to={`/barber/${barbers.id}`}>
@@ -121,7 +120,6 @@ function HomePage({ ...props }) {
       </div>
     </Service>
   ));
-console.log(allbarber)
   return (
     <Col md="10" sm="10">
       <Container className="fill">

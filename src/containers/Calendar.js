@@ -1,32 +1,31 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback,useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
 import { addMonths, setHours, setMinutes } from 'date-fns';
-import { Route, Redirect } from 'react-router-dom';
 import createBooking from '../api/AllApi';
 
 import 'react-datepicker/dist/react-datepicker.css';
 
 function Calendar({ history, ...props }) {
   let blockdays = [];
-  let groupedData = null;
+  let groupedData = useRef(null);
   const { barberId, userId, dateTime } = props;
 
   const blockHours = [];
-  let all = null;
+  let all = useRef(null);
 
-  function cToObject(bk) {
-    if (bk !== null) {
-      groupedData = bk.reduce((results, item) => {
+const cToObject = useCallback((bk) =>{
+  if (bk !== null) {
+      groupedData.current = bk.reduce((results, item) => {
         if (item.barber_id === barberId) {
-          const jsDate = new Date(item.book_time)
-           
-          const year = jsDate.getFullYear();
-    const day = jsDate.getDate();
-        const month = jsDate.getMonth() + 1;
+          const jsDate = new Date(item.book_time);
 
-    const newDate = `${year}/${month}/${day}`;
-    const hour = jsDate.getHours();
+          const year = jsDate.getFullYear();
+          const day = jsDate.getDate();
+          const month = jsDate.getMonth() + 1;
+
+          const newDate = `${year}/${month}/${day}`;
+          const hour = jsDate.getHours();
           // eslint-disable-next-line no-param-reassign
           results[newDate] = results[newDate] || [];
           results[newDate].push(hour);
@@ -38,16 +37,14 @@ function Calendar({ history, ...props }) {
         return results;
       }, {});
     }
-    for (let i = 0; i < Object.keys(groupedData).length; i += 1) {
-      if (Object.values(groupedData)[i].length >= 8) {
-        blockdays.push(new Date(Object.keys(groupedData)[i]));
+    for (let i = 0; i < Object.keys(groupedData.current).length; i += 1) {
+      if (Object.values(groupedData.current)[i].length >= 8) {
+        blockdays.push(new Date(Object.keys(groupedData.current)[i]));
       }
     }
-    all = groupedData;
+    all.current = groupedData;
     return groupedData;
-  }
-
-  cToObject(dateTime);
+},[barberId, blockdays] )
 
   const [startDate, setStartDate] = useState(new Date());
   const [startTime, setStartTime] = useState(
@@ -55,24 +52,28 @@ function Calendar({ history, ...props }) {
   );
 
   useEffect(() => {
-    cToObject(dateTime);
+      cToObject(dateTime);
     const novaDaata = new Date(startDate);
     const year = novaDaata.getFullYear();
     const month = novaDaata.getMonth() + 1;
     const day = novaDaata.getDate();
     const newDate = `${year}/${month}/${day}`;
-    if (all[newDate]) {
-      for (let i = 0; i < all[newDate].length; i += 1) {
-        blockHours.push(setHours(setMinutes(new Date(), 0), all[newDate][i]));
+ 
+    const allBokkings =all.current.current[newDate]
+    if (allBokkings) {
+      for (let i = 0; i < allBokkings.length; i += 1) {
+        blockHours.push(setHours(setMinutes(new Date(), 0), allBokkings[i]));
       }
     }
-  }, [blockdays]);
+  }, [blockdays, blockHours, cToObject, dateTime, all, startDate, groupedData]);
 
   function onSubmit(event) {
     event.preventDefault();
-    const finalBooking= setHours(setMinutes(new Date(startDate), 0), startTime.getHours())
-    console.log(finalBooking)
-    createBooking(userId, barberId,finalBooking)
+    const finalBooking = setHours(
+      setMinutes(new Date(startDate), 0),
+      startTime.getHours(),
+    );
+    createBooking(userId, barberId, finalBooking)
       .then(() => {
         history.push('/bookings');
       })

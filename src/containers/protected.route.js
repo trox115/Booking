@@ -12,7 +12,7 @@ function ProtectedRoute({
 }) {
   useEffect(() => {
     checkLogin();
-  }, []);
+  }, [checkLogin]);
   return (
     <Route
       // eslint-disable-next-line react/jsx-props-no-spreading
