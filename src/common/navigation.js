@@ -13,7 +13,9 @@ import {
   faPinterestP,
 } from '@fortawesome/free-brands-svg-icons';
 import * as logout from '../actions/Actions';
-import {Brand, SingleLink,Button,Social,CopyWright} from '../styles'
+import {
+  Brand, SingleLink, Button, Social, CopyWright,
+} from '../styles';
 
 function NavBar({ logout }) {
   function handleClick() {
@@ -21,7 +23,6 @@ function NavBar({ logout }) {
   }
 
   return (
-
     <Col md="2" sm="2">
       <Nav className="nav flex-column nav-pills nav-fill">
         <SingleLink className="navbar-brand" href="/">

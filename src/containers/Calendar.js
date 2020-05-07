@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback,useRef } from 'react';
+import React, { useState, useEffect, useCallback, useRef } from 'react';
 import DatePicker from 'react-datepicker';
 import PropTypes from 'prop-types';
 import { addMonths, setHours, setMinutes } from 'date-fns';
@@ -14,37 +14,40 @@ function Calendar({ history, ...props }) {
   const blockHours = [];
   let all = useRef(null);
 
-const cToObject = useCallback((bk) =>{
-  if (bk !== null) {
-      groupedData.current = bk.reduce((results, item) => {
-        if (item.barber_id === barberId) {
-          const jsDate = new Date(item.book_time);
+  const cToObject = useCallback(
+    bk => {
+      if (bk !== null) {
+        groupedData.current = bk.reduce((results, item) => {
+          if (item.barber_id === barberId) {
+            const jsDate = new Date(item.book_time);
 
-          const year = jsDate.getFullYear();
-          const day = jsDate.getDate();
-          const month = jsDate.getMonth() + 1;
+            const year = jsDate.getFullYear();
+            const day = jsDate.getDate();
+            const month = jsDate.getMonth() + 1;
 
-          const newDate = `${year}/${month}/${day}`;
-          const hour = jsDate.getHours();
-          // eslint-disable-next-line no-param-reassign
-          results[newDate] = results[newDate] || [];
-          results[newDate].push(hour);
-          // eslint-disable-next-line no-param-reassign
-          results[item.date] = results[item.date] || [];
-          results[item.date].push(item.hour);
-        }
+            const newDate = `${year}/${month}/${day}`;
+            const hour = jsDate.getHours();
+            // eslint-disable-next-line no-param-reassign
+            results[newDate] = results[newDate] || [];
+            results[newDate].push(hour);
+            // eslint-disable-next-line no-param-reassign
+            results[item.date] = results[item.date] || [];
+            results[item.date].push(item.hour);
+          }
 
-        return results;
-      }, {});
-    }
-    for (let i = 0; i < Object.keys(groupedData.current).length; i += 1) {
-      if (Object.values(groupedData.current)[i].length >= 8) {
-        blockdays.push(new Date(Object.keys(groupedData.current)[i]));
+          return results;
+        }, {});
       }
-    }
-    all.current = groupedData;
-    return groupedData;
-},[barberId, blockdays] )
+      for (let i = 0; i < Object.keys(groupedData.current).length; i += 1) {
+        if (Object.values(groupedData.current)[i].length >= 8) {
+          blockdays.push(new Date(Object.keys(groupedData.current)[i]));
+        }
+      }
+      all.current = groupedData;
+      return groupedData;
+    },
+    [barberId, blockdays],
+  );
 
   const [startDate, setStartDate] = useState(new Date());
   const [startTime, setStartTime] = useState(
@@ -52,14 +55,14 @@ const cToObject = useCallback((bk) =>{
   );
 
   useEffect(() => {
-      cToObject(dateTime);
+    cToObject(dateTime);
     const novaDaata = new Date(startDate);
     const year = novaDaata.getFullYear();
     const month = novaDaata.getMonth() + 1;
     const day = novaDaata.getDate();
     const newDate = `${year}/${month}/${day}`;
- 
-    const allBokkings =all.current.current[newDate]
+
+    const allBokkings = all.current.current[newDate];
     if (allBokkings) {
       for (let i = 0; i < allBokkings.length; i += 1) {
         blockHours.push(setHours(setMinutes(new Date(), 0), allBokkings[i]));

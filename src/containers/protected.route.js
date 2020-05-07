@@ -10,7 +10,6 @@ function ProtectedRoute({
   component: Component,
   ...rest
 }) {
-
   useEffect(() => {
     checkLogin();
   }, [checkLogin]);
@@ -58,7 +57,7 @@ ProtectedRoute.propTypes = {
   }).isRequired,
   component: PropTypes.shape({
     WrappedComponent: PropTypes.func.isRequired,
-    }).isRequired,
+  }).isRequired,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProtectedRoute);

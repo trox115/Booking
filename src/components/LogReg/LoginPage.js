@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as authActions from '../../actions/Actions';
-import {ImageLeft,Login,Container} from '../../styles'
+import { ImageLeft, Login, Container } from '../../styles';
 
 function LoginPage({ createSession, history }) {
   const [form, setState] = useState({
@@ -49,7 +49,6 @@ function LoginPage({ createSession, history }) {
               value={form.password}
             />
             <button type="submit"> Login </button>
-            
           </form>
           <a href="/register">Register</a>
         </div>

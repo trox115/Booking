@@ -1,5 +1,5 @@
 import React from 'react';
-import {connect} from 'react-redux'
+import { connect } from 'react-redux';
 
 function LifestylePage() {
   return <p>LifeStyle</p>;
@@ -11,4 +11,4 @@ function mapStateToProps(state) {
   };
 }
 
-export default connect(mapStateToProps)(LifestylePage;);
+export default connect(mapStateToProps)(LifestylePage);

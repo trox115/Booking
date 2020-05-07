@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
+import PropTypes from 'prop-types';
 import Table from '../containers/table';
+
+function getNameFromId(id, barbers) {
+  const barberName = barbers.find(barber => barber.id === id);
+  return barberName.name;
+}
 
 function Booking({ barbers }) {
   const [booking, setBooking] = useState(null);
@@ -51,7 +57,7 @@ function Booking({ barbers }) {
         )),
       );
     }
-  }, [booking,barbers]);
+  }, [booking, barbers]);
   if (bks !== []) {
     return (
       <>
@@ -70,16 +76,13 @@ function Booking({ barbers }) {
   }
   return <p>No appointments for this user</p>;
 }
-function getNameFromId(id, barbers) {
-  const barberName = barbers.find(barber => barber.id === id);
-
-  return barberName.name;
-}
 
 function mapStateToProps(state) {
   return {
     barbers: state.barber,
   };
 }
-
+Booking.propTypes = {
+  barbers: PropTypes.instanceOf(Array).isRequired,
+};
 export default connect(mapStateToProps)(Booking);

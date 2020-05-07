@@ -11,7 +11,6 @@ import HomePage from './components/HomePage/HomePage';
 import LifestylePage from './components/LifestylePage/LifestylePage';
 import BarberPage from './components/BarberPage/BarberPage';
 import NavBar from './common/navigation';
-
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
