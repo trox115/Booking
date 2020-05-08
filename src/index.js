@@ -26,7 +26,7 @@ ReactDOM.render(
       <App />
     </Router>
   </Provider>
-   <HttpsRedirect/>,
+   </HttpsRedirect>,
 
   document.getElementById('root'),
 );
