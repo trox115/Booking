@@ -2,10 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Provider } from 'react-redux';
+import HttpsRedirect from 'react-https-redirect';
 import configureStore from './configureStore';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import HttpsRedirect from 'react-https-redirect';
 
 function saveToLocalStorage(state) {
   try {
