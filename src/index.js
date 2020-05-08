@@ -20,13 +20,13 @@ function saveToLocalStorage(state) {
 const store = configureStore();
 store.subscribe(() => saveToLocalStorage(store.getState()));
 ReactDOM.render(
-   <HttpsRedirect>
-  <Provider store={store}>
-    <Router>
-      <App />
-    </Router>
-  </Provider>
-   </HttpsRedirect>,
+  <HttpsRedirect>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
+  </HttpsRedirect>,
 
   document.getElementById('root'),
 );
