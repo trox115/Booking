@@ -44,7 +44,7 @@ Give a star ⭐️ if you like this project!
 
 ## Barber App Features
 
-To view the live demo click the link [Github](https://antoniobarberapi.com) and you will be taken to the login page. You may register or you can login with:
+To view the live demo click the [link](https://antoniobarberapi.com) and you will be taken to the login page. You may register or you can login with:
 - email: test@test.com
 - password: 1234 
 
