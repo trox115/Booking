@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import configureStore from './configureStore';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import HttpsRedirect from 'react-https-redirect';
 
 function saveToLocalStorage(state) {
   try {
@@ -19,11 +20,13 @@ function saveToLocalStorage(state) {
 const store = configureStore();
 store.subscribe(() => saveToLocalStorage(store.getState()));
 ReactDOM.render(
+   <HttpsRedirect>
   <Provider store={store}>
     <Router>
       <App />
     </Router>
-  </Provider>,
+  </Provider>
+   <HttpsRedirect>,
 
   document.getElementById('root'),
 );
