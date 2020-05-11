@@ -8,11 +8,10 @@ import 'react-datepicker/dist/react-datepicker.css';
 
 function Calendar({ history, ...props }) {
   let blockdays = [];
-  let groupedData = useRef(null);
+  const groupedData = useRef(null);
   const { barberId, userId, dateTime } = props;
-
   const blockHours = [];
-  let all = useRef(null);
+  const all = useRef(null);
 
   const cToObject = useCallback(
     bk => {
