@@ -4,76 +4,26 @@ import PropTypes from 'prop-types';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import styled from 'styled-components';
-import Calendar from './Calendar';
+import Calendar from '../../containers/Calendar';
+import { BarberPic, Overlay, TitleBarber } from '../../styles';
 import * as bookingActions from '../../actions/Actions';
 
-const color = ({ currentColor }) => currentColor;
-const barberphto = ({ currentphoto }) => currentphoto;
-const Overlay = styled.div`
-  min-width: 100%;
-  height: 100vh;
-  background-color: ${color};
-  opacity: 0.7;
-  margin-left: -10px;
-  z-index: 2;
-`;
-
-const BarberPic = styled.div`
-  background-image: url(${barberphto});
-  height: 100%;
-  width: 100%;
-  background-repeat: no-repeat;
-  position: fixed;
-  top: 0;
-  z-index: 1;
-  background-position: left bottom;
-`;
-const Title = styled.div`
-  font-family: 'Lato', black;
-  text-align: center;
-  color: white;
-  margin: 0 25%;
-  justify-content: center;
-  align-content: center;
-  align-items: center;
-  h3 {
-    font-weight: 900;
-    border-bottom: 1px solid white;
-    width: 300px;
-  }
-  p {
-    color: gray;
-    width: 300px;
-  }
-
-  button {
-    background-color: white;
-    color: black;
-    border-radius: 50% 50% 50% 50%;
-    height: 50px;
-    width: 120px;
-  }
-`;
-
-function BarberPage({ Bookings, ...props }) {
+function BarberPage({ history, Bookings, ...props }) {
   const [bk, setBooking] = useState([]);
-  const userId = 4;
-
+  const { user } = props;
+  const userId = user[0].user.id;
   const { barbers } = props;
   // eslint-disable-next-line no-unused-vars
   const [barber, setBarber] = useState({ ...barbers });
-
-  useEffect(async () => {
-    async function fetchData() {
-      const response = await fetch('http://localhost:3001/bookings');
-      const data = await response.json();
-      setBooking(await data);
-    }
-
+  async function fetchData() {
+    const response = await fetch('https://antonio-barber-api.herokuapp.com/bookings');
+    const data = await response.json();
+    setBooking(await data);
+  }
+  useEffect(() => {
     fetchData();
-  }, [0]);
-  const photo = `/${barber.phto}.png`;
+  }, []);
+  const photo = `/${barber.photo_link}.png`;
   return (
     <Col md="10 p-0" className="barber">
       <BarberPic currentphoto={photo}>
@@ -81,13 +31,16 @@ function BarberPage({ Bookings, ...props }) {
           <Container className="fill">
             <Row className="align-items-center h-100">
               <Col md="12">
-                <Title>
+                <TitleBarber>
                   <h3>Book this barber now</h3>
-                  <p>
-                    {barber.description}
-                  </p>
-                </Title>
-                <Calendar dateTime={bk} barberId={barber.id} userId={userId} />
+                  <p>{barber.description}</p>
+                </TitleBarber>
+                <Calendar
+                  dateTime={bk}
+                  barberId={barber.id}
+                  userId={userId}
+                  history={history}
+                />
               </Col>
             </Row>
           </Container>
@@ -119,6 +72,9 @@ function mapDispatchToProps(dispatch) {
 BarberPage.propTypes = {
   Bookings: PropTypes.func.isRequired,
   user: PropTypes.instanceOf(Array).isRequired,
-  barbers: PropTypes.instanceOf(Array).isRequired,
+  barbers: PropTypes.shape({ id: PropTypes.number.isRequired }).isRequired,
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }).isRequired,
 };
 export default connect(mapStateToProps, mapDispatchToProps)(BarberPage);

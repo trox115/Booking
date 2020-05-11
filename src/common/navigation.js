@@ -1,8 +1,9 @@
 import React from 'react';
+import { connect } from 'react-redux';
 import Nav from 'react-bootstrap/Nav';
 import { NavLink } from 'react-router-dom';
 import Col from 'react-bootstrap/Col';
-import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebookF,
@@ -11,45 +12,16 @@ import {
   faVimeoV,
   faPinterestP,
 } from '@fortawesome/free-brands-svg-icons';
+import * as logout from '../actions/Actions';
+import {
+  Brand, SingleLink, Button, Social, CopyWright,
+} from '../styles';
 
-const Brand = styled.h1`
-  font-family: 'Pacifico', cursive;
-  transform: rotate(-10deg);
-  text-decoration: underline;
-  font-size: 30px;
-  text-align: center;
-  color: black;
-  margin-top: 30px;
-  margin-bottom: 60px;
-`;
-
-const SingleLink = styled.a`
-  margin-left: 10px;
-  font-family: 'Lato', black;
-  font-weight: 600;
-  text-align: left;
-  color: black;
-  cursor: pointer;
-`;
-
-const Social = styled.div`
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  color: black;
-  margin-bottom: 30px;
-  text-align: center;
-  margin-left: 10px;
-  svg {
-    margin-left: 10px;
+function NavBar({ logout }) {
+  function handleClick() {
+    logout();
   }
-`;
-const CopyWright = styled.div`
-  p {
-    font-size: 11px;
-  }
-`;
-function NavBar() {
+
   return (
     <Col md="2" sm="2">
       <Nav className="nav flex-column nav-pills nav-fill">
@@ -67,9 +39,6 @@ function NavBar() {
         >
           LifeStyle
         </NavLink>
-        <NavLink to="/book" className="nav-link" activeClassName="active" exact>
-          Book
-        </NavLink>
         <NavLink
           to="/bookings"
           className="nav-link"
@@ -78,6 +47,9 @@ function NavBar() {
         >
           Your Bookkings
         </NavLink>
+        <Button type="button" onClick={handleClick} className="nav-link rem">
+          Logout
+        </Button>
         <Social>
           <FontAwesomeIcon icon={faTwitter} />
           <FontAwesomeIcon icon={faFacebookF} />
@@ -92,5 +64,13 @@ function NavBar() {
     </Col>
   );
 }
+function mapDispatchToProps(dispatch) {
+  return {
+    logout: () => dispatch(logout.logout()),
+  };
+}
+NavBar.propTypes = {
+  logout: PropTypes.func.isRequired,
+};
 
-export default NavBar;
+export default connect(null, mapDispatchToProps)(NavBar);

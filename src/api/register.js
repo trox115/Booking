@@ -1,13 +1,12 @@
 import axios from 'axios';
 
 function Register({ ...props }) {
-  // Because password digest from rails
   // eslint-disable-next-line camelcase
   const { email, password, password_confirmation } = props;
 
-  axios
+  return axios
     .post(
-      'http://localhost:3001/registrations',
+      'https://antonio-barber-api.herokuapp.com/registrations',
       {
         user: {
           email,
@@ -26,7 +25,7 @@ export function session({ ...props }) {
 
   return axios
     .post(
-      'http://localhost:3001/sessions',
+      'https://antonio-barber-api.herokuapp.com/sessions',
       {
         user: {
           email,

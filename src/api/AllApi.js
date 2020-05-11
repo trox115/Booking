@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const baseUrl = 'http://localhost:3001/barbers';
+const baseUrl = 'https://antonio-barber-api.herokuapp.com/barbers';
 
 export function getBarbers() {
   return axios
@@ -9,16 +9,16 @@ export function getBarbers() {
     .catch(erro => erro);
 }
 
-export default function createBooking(date, time, user, barber) {
+// eslint-disable-next-line camelcase
+export default function createBooking(user, barber, book_time) {
   return axios
     .post(
-      'http://localhost:3001/bookings',
+      'https://antonio-barber-api.herokuapp.com/bookings',
       {
         booking: {
-          date,
-          hour: time,
           user_id: user,
           barber_id: barber,
+          book_time,
         },
       },
       { withCredentials: true },
@@ -29,28 +29,33 @@ export default function createBooking(date, time, user, barber) {
 
 export function getBookings() {
   return axios
-    .get('http://localhost:3001/bookings', { withCredentials: true })
+    .get('https://antonio-barber-api.herokuapp.com/bookings', {
+      withCredentials: true,
+    })
     .then(response => response)
     .catch(erro => erro);
 }
 
 export function getMyBookings() {
   return axios
-    .get('http://localhost:3001/bookings/show', { withCredentials: true })
+    .get('https://antonio-barber-api.herokuapp.com/show', {
+      withCredentials: true,
+    })
     .then(response => response)
     .catch(erro => erro);
 }
 
-// export default function createBooking(date, time) {
-//   const bookings = {
-//     booking: {
-//       date: date,
-//       hour: time,
-//     },
-//   };
-//   return fetch('http://localhost:3001/bookings', {
-//     method: 'POST',
-//     headers: { 'content-type': 'application/json' },
-//     body: JSON.stringify(bookings),
-//   });
-// }
+export function isLoggedIn() {
+  return axios
+    .get('https://antonio-barber-api.herokuapp.com/loggedin', {
+      withCredentials: true,
+    })
+    .then(response => response)
+    .catch(erro => erro);
+}
+export function deleteSession() {
+  return axios
+    .delete('https://antonio-barber-api.herokuapp.com/logout', { withCredentials: true })
+    .then(response => response)
+    .catch(erro => erro);
+}

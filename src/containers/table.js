@@ -1,19 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function Table({ key, date, hour }) {
+function Table({ date, hour, barber }) {
   return (
-    <tbody>
-      <tr key>
-        <td key={key}>{date}</td>
-        <td key={key}>{hour}</td>
-      </tr>
-    </tbody>
+    <tr>
+      <td>{date}</td>
+      <td>
+        {hour}
+        :00h
+      </td>
+      <td>{barber}</td>
+    </tr>
   );
 }
 Table.propTypes = {
-  key: PropTypes.number.isRequired,
   date: PropTypes.string.isRequired,
   hour: PropTypes.number.isRequired,
+  barber: PropTypes.string.isRequired,
 };
 export default Table;
