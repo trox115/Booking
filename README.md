@@ -1,64 +1,73 @@
 # Barber Booking App
-An app that allow users to book a barber. The purpose of the entire project is to work with a full-stack ( ruby on rails and react).
 
+An app that allow users to book a barber. The purpose of the entire project is to work with a full-stack ( ruby on rails and react).
 
 On a new version it will allow the barber to register too.
 
 ## Built With
+
 - Javascript
 - React
 - React-redux
 - React-router
 - npm
 - Ruby on Rails
-- CSS 
+- CSS
 - Html
 
 ## Getting Started
 
 Open the [Live Demo Link](https://antoniobarberapi.herokuapp.com/) .
 If you don't want to register use this;
+
 - email: test@test.com
-- password: 1234 
+- password: 1234
 
 ## Author
 
 👤 António Fernandes
 
-[Github](https://github.com/trox115) | [Twitter](https://twitter.com/rock_67) 
+[Github](https://github.com/trox115) | [Twitter](https://twitter.com/rock_67) | [LinkedIn](https://www.linkedin.com/in/antoniomfernandes/) | [Email](mailto:email@antoniofernandes.com) | [Portfolio](https://www.antoniofernandes.com/)
 
 ## 🤝 Contributing
+
 Contributions, issues and feature requests are welcome!
 
 Feel free to check the issues page.
 
-Need More Work:
-- Transitions.
-- Improve UI/UX (especially the booking table and booking form)
-- Barber Register
-- Create lifestyle page
+Future Features:
 
+- [ ] Implement Transitions.
+- [ ] Improve UI/UX (especially the booking table and booking form).
+- [ ] Barber Register.
+- [ ] Create lifestyle page.
+- [ ] Barber BackOffice.
 
 ## Show your support
+
 Give a star ⭐️ if you like this project!
 
 ## Barber App Features
 
 To view the live demo click the [link](https://antoniobarberapi.com) and you will be taken to the login page. You may register or you can login with:
+
 - email: test@test.com
-- password: 1234 
+- password: 1234
 
 ![Barbers Login Page](documentation/images/loginpage.png)
 
 ### Pick a barber
+
 After the login you will be presented with all barbers, you may slide left or right until you find your favourite barber to book an appointment.
 ![Barbers home Page](documentation/images/barberpage.png)
 
 ### Check de description
+
 After you pick a barber, you can check the description.
 ![Barbers home Page](documentation/images/singlebarber.png)
 
 ### Pick a date and a time
+
 You may now choose your favourite date and time. Note that, if the barber is already booking for that time the time color will be gray. If the barber has all time slots booked, the day will appear as grey and none clickable.
 
 ![Barbers home Page](documentation/images/booking.png)
@@ -82,7 +91,6 @@ then you are prompted to your browser to [http://localhost:3000/](http://localho
 ### Warning: This will only work locally if you download the API
 
 Get it [here](https://github.com/trox115/barber-api)
-
 
 # About This Project
 
