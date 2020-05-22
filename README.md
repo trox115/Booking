@@ -27,7 +27,7 @@ If you don't want to register use this;
 
 👤 António Fernandes
 
-[Github](https://github.com/trox115) | [Twitter](https://twitter.com/rock_67) | [LinkedIn](https://www.linkedin.com/in/antoniomfernandes/) | [email](mailto:email@antoniofernandes.com) | [Portfolio](https://www.antoniofernandes.com/)
+[Github](https://github.com/trox115) | [Twitter](https://twitter.com/rock_67) | [LinkedIn](https://www.linkedin.com/in/antoniomfernandes/) | [Email](mailto:email@antoniofernandes.com) | [Portfolio](https://www.antoniofernandes.com/)
 
 ## 🤝 Contributing
 
