@@ -1,6 +1,6 @@
 # Barber Booking App
 
-An app that allow users to book a barber. The purpose of the entire project is to work with a full-stack ( ruby on rails and react).
+An app that allows users to book a barber. The purpose of the entire project is to work with a full-stack ( ruby on rails and react).
 
 On a new version it will allow the barber to register too.
 
@@ -17,8 +17,8 @@ On a new version it will allow the barber to register too.
 
 ## Getting Started
 
-Open the [Live Demo Link](https://antoniobarberapi.herokuapp.com/) .
-If you don't want to register use this;
+Open the [Live Demo Link](https://antoniobarberapi.herokuapp.com/).
+If you don't want to register use these credentials:
 
 - email: test@test.com
 - password: 1234
@@ -31,11 +31,11 @@ If you don't want to register use this;
 
 ## 🤝 Contributing
 
-Contributions, issues and feature requests are welcome!
+Contributions, issues, and feature requests are welcome!
 
 Feel free to check the issues page.
 
-Future Features:
+## Future Features:
 
 - [ ] Implement Transitions.
 - [ ] Improve UI/UX (especially the booking table and booking form).
@@ -49,7 +49,7 @@ Give a star ⭐️ if you like this project!
 
 ## Barber App Features
 
-To view the live demo click the [link](https://antoniobarberapi.com) and you will be taken to the login page. You may register or you can login with:
+To view the live demo click the [link](https://antoniobarberapi.com) and you will be taken to the login page. You may register or you can log in with:
 
 - email: test@test.com
 - password: 1234
@@ -58,7 +58,7 @@ To view the live demo click the [link](https://antoniobarberapi.com) and you wil
 
 ### Pick a barber
 
-After the login you will be presented with all barbers, you may slide left or right until you find your favourite barber to book an appointment.
+After the login you will be presented with all barbers, you may slide left or right until you find your favorite barber to book an appointment.
 ![Barbers home Page](documentation/images/barberpage.png)
 
 ### Check de description
@@ -68,7 +68,8 @@ After you pick a barber, you can check the description.
 
 ### Pick a date and a time
 
-You may now choose your favourite date and time. Note that, if the barber is already booking for that time the time color will be gray. If the barber has all time slots booked, the day will appear as grey and none clickable.
+You may now choose your favorite date and time. Note that, if the barber is already booking for that time the time color will be gray. If the barber has all off the time slots booked, the day will appear as grey and none clickable.
+
 
 ![Barbers home Page](documentation/images/booking.png)
 
