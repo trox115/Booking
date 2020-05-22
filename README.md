@@ -35,12 +35,13 @@ Contributions, issues and feature requests are welcome!
 
 Feel free to check the issues page.
 
-Need More Work:
+Future Features:
 
-- Transitions.
-- Improve UI/UX (especially the booking table and booking form)
-- Barber Register
-- Create lifestyle page
+- [ ] Implement Transitions.
+- [ ] Improve UI/UX (especially the booking table and booking form).
+- [ ] Barber Register.
+- [ ] Create lifestyle page.
+- [ ] Barber BackOffice.
 
 ## Show your support
 
