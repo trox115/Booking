@@ -18,7 +18,7 @@ On a new version it will allow the barber to register too.
 ## Getting Started
 
 Open the [Live Demo Link](https://antoniobarberapi.herokuapp.com/).
-If you don't want to register use these credentials:
+If you don't want to register, you can log in using these credentials:
 
 - email: test@test.com
 - password: 1234
@@ -49,7 +49,7 @@ Give a star ⭐️ if you like this project!
 
 ## Barber App Features
 
-To view the live demo click the [link](https://antoniobarberapi.com) and you will be taken to the login page. You may register or you can log in with:
+To view, the live demo click the [link](https://antoniobarberapi.com) and you will be taken to the login page. You may register or you can log in with:
 
 - email: test@test.com
 - password: 1234
@@ -68,7 +68,7 @@ After you pick a barber, you can check the description.
 
 ### Pick a date and a time
 
-You may now choose your favorite date and time. Note that, if the barber is already booking for that time the time color will be gray. If the barber has all off the time slots booked, the day will appear as grey and none clickable.
+You may now choose your favorite date and time. Note that, if the barber is already booking for that time the time color will be gray. If the barber has all of the time slots booked, the day will appear as grey and none clickable.
 
 
 ![Barbers home Page](documentation/images/booking.png)
