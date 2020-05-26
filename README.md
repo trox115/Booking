@@ -1,12 +1,12 @@
 # Barber Booking App
 
-An app that allows users to book a barber. The purpose of the entire project is to work with a full-stack ( ruby on rails and react).
+An app that allows users to book a barber. The purpose of the entire project is to work with a Full-Stack ( Ruby on Rails and React ).
 
 On a new version it will allow the barber to register too.
 
 ## Built With
 
-- Javascript
+- JavaScript
 - React
 - React-redux
 - React-router
@@ -70,7 +70,6 @@ After you pick a barber, you can check the description.
 
 You may now choose your favorite date and time. Note that, if the barber is already booking for that time the time color will be gray. If the barber has all of the time slots booked, the day will appear as grey and none clickable.
 
-
 ![Barbers home Page](documentation/images/booking.png)
 
 After you book your appointment you will be redirected to your bookings page.
@@ -91,7 +90,7 @@ then you are prompted to your browser to [http://localhost:3000/](http://localho
 
 ### Warning: This will only work locally if you download the API
 
-Get it [here](https://github.com/trox115/barber-api)
+Get it [here](https://github.com/trox115/barber-api).
 
 # About This Project
 
