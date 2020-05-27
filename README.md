@@ -1,6 +1,6 @@
 # Barber Booking App
 
-An app that allows users to book a barber. The purpose of the entire project is to work with a Full-Stack ( Ruby on Rails and React ).
+An app that allows users to book a barber. The purpose of the entire project is to work with a Full-Stack (Ruby on Rails and React).
 
 On a new version it will allow the barber to register too.
 
@@ -13,7 +13,7 @@ On a new version it will allow the barber to register too.
 - npm
 - Ruby on Rails
 - CSS
-- Html
+- HTML
 
 ## Getting Started
 
@@ -76,7 +76,7 @@ After you book your appointment you will be redirected to your bookings page.
 
 # Running Guide
 
-to get a running version of this project on your machine you have to install node and then follow the instructions, for installing Node go to the [node Oficial site https://nodejs.org/](https://nodejs.org/) and follow the installation instructions
+To get a running version of this project on your machine you have to install node and then follow the instructions, for installing Node go to the [node Oficial site https://nodejs.org/](https://nodejs.org/) and follow the installation instructions:
 
 ```Shell
 your@pc:~$ git clone https://github.com/trox115/booking.git
