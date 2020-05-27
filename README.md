@@ -79,8 +79,8 @@ After you book your appointment you will be redirected to your bookings page.
 To get a running version of this project on your machine you have to install node and then follow the instructions, for installing Node go to the [node Oficial site https://nodejs.org/](https://nodejs.org/) and follow the installation instructions:
 
 ```Shell
-your@pc:~$ git clone https://github.com/trox115/booking.git
-your@pc:~$ cd booking
+your@pc:~$ git clone https://github.com/trox115/Booking.git
+your@pc:~$ cd Booking
 your@pc:~$ npm install
 your@pc:~$ npm start
 
